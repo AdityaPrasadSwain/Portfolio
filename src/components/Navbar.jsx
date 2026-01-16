@@ -20,6 +20,7 @@ const Navbar = () => {
         { name: 'Resume', href: '#resume' }, // Linked to Interactive Resume
         { name: 'Projects', href: '#projects' },
         { name: 'Education', href: '#education' },
+        { name: 'Skills', href: '#skills' },
         { name: 'Contact', href: '#contact' },
     ];
 

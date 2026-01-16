@@ -69,7 +69,7 @@ const AnimatedLogo = () => {
             whileHover="hover"
             style={{ overflow: 'hidden' }} // Keep it contained
         >
-            {['A', 'D', 'I', 'T', 'Y', 'A'].map((char, index) => (
+            {['P', 'o', 'r', 't', 'f', 'o', 'l', 'i', 'o'].map((char, index) => (
                 <motion.span
                     key={index}
                     variants={letterVariants}

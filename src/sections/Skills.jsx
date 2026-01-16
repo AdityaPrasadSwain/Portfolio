@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code, Database, Brain, Cpu, Wrench, Search } from 'lucide-react'
+import { Code, Database, Brain, Cpu, Wrench, Search, Sparkles } from 'lucide-react'
 
 const ALL_SKILLS = [
     // Languages
@@ -31,6 +31,7 @@ const ALL_SKILLS = [
     { name: "VS Code", category: "Tools", icon: "vscode" },
 
     // AI & Advanced
+    { name: "Gen AI", category: "AI", icon: "custom-genai" },
     { name: "OpenAI API", category: "AI", icon: "custom-openai" },
     { name: "RAG Systems", category: "AI", icon: "custom-rag" },
     { name: "LLM Agents", category: "AI", icon: "custom-llm" },
@@ -50,11 +51,12 @@ export default function Skills() {
     }
 
     const CustomIcon = ({ type }) => {
+        if (type === "custom-genai") return <Sparkles className="text-purple-400" size={32} />;
         if (type === "custom-rag") return <Database className="text-emerald-400" size={32} />;
         if (type === "custom-llm") return <Brain className="text-pink-400" size={32} />;
         if (type === "custom-prompt") return <Cpu className="text-amber-400" size={32} />;
         if (type === "custom-openai") return <img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg" alt="OpenAI" className="w-8 h-8" />;
-        if (type === "custom-n8n") return <img src="https://cdn.worldvectorlogo.com/logos/n8n.svg" alt="n8n" className="w-8 h-8" />;
+        if (type === "custom-n8n") return <img src="https://vectorseek.com/wp-content/uploads/2025/07/N8n-Ai-Logo-PNG-SVG-Vector.png" alt="n8n" className="w-8 h-8 rounded-full" />;
         if (type === "custom-vercel") return <img src="https://cdn.worldvectorlogo.com/logos/vercel.svg" alt="Vercel" className="w-8 h-8" />;
         return <Code size={32} />;
     }
