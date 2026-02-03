@@ -41,7 +41,7 @@ export default function ProjectDetails({ project, onClose }) {
                     </button>
 
                     {/* Hero Image / Header */}
-                    <div className="h-64 md:h-80 bg-gradient-to-br from-primary/20 via-blue-50 to-secondary/20 relative p-8 flex flex-col justify-end border-b-2 border-slate-200">
+                    <div className="h-64 md:h-80 bg-gradient-to-br from-primary/20 via-blue-50 to-secondary/20 relative p-8 pt-12 md:pt-16 flex flex-col justify-end border-b-2 border-slate-200">
                         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
                         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl"></div>
 
