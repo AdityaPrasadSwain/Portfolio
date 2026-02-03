@@ -1,9 +1,5 @@
-import { Suspense, useState, useEffect } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { EffectComposer, Bloom, Noise, Vignette } from '@react-three/postprocessing'
-import Background3D from './three/Background3D'
+import { useState, useEffect } from 'react'
 import About from './sections/About'
-import InteractiveResume from './sections/InteractiveResume'
 
 import Contact from './sections/Contact'
 import Footer from './components/Footer'
@@ -27,20 +23,6 @@ function App() {
     <div className="relative w-full min-h-screen bg-background text-textMain">
       <Navbar />
 
-      {/* 3D Background Layer - Disabled as per request for clean white theme */}
-      {/* <div className="fixed inset-0 z-0 pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 2]} gl={{ antialias: false, powerPreference: "high-performance" }}>
-          <Suspense fallback={null}>
-            <Background3D />
-            <EffectComposer>
-              <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} height={300} intensity={0.5} />
-              <Noise opacity={0.05} />
-              <Vignette eskil={false} offset={0.1} darkness={1.1} />
-            </EffectComposer>
-          </Suspense>
-        </Canvas>
-      </div> */}
-
       {/* Cinematic Loader */}
       <div
         className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-background transition-opacity duration-1000 pointer-events-none ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
@@ -56,7 +38,6 @@ function App() {
         <div className="container mx-auto px-6">
           <Hero />
           <About />
-          <InteractiveResume />
           <Projects />
           <Education />
           <Skills />

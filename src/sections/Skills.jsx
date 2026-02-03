@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code, Database, Brain, Cpu, Wrench, Search, Sparkles } from 'lucide-react'
+import { Code, Database, Brain, Cpu, Sparkles, Search } from 'lucide-react'
 
 const ALL_SKILLS = [
     // Languages
@@ -41,20 +41,51 @@ const ALL_SKILLS = [
 
 const CATEGORIES = ["All", ...new Set(ALL_SKILLS.map(s => s.category))]
 
+function SkillCard({ skill, getIconUrl, CustomIcon }) {
+    return (
+        <motion.div
+            layout
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="group relative rounded-2xl bg-white border border-gray-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+        >
+            <div className="relative h-full p-6 flex flex-col items-center justify-center gap-4">
+                <div className="w-12 h-12 flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
+                    {skill.icon.startsWith("custom-") ? (
+                        <CustomIcon type={skill.icon} />
+                    ) : (
+                        <img
+                            src={getIconUrl(skill.icon)}
+                            alt={skill.name}
+                            className="w-full h-full object-contain filter drop-shadow-sm"
+                            loading="lazy"
+                        />
+                    )}
+                </div>
+                <span className="text-gray-600 font-medium text-sm text-center group-hover:text-primary transition-colors">
+                    {skill.name}
+                </span>
+            </div>
+        </motion.div>
+    );
+}
+
 export default function Skills() {
     const [activeCategory, setActiveCategory] = useState("All")
     const [searchQuery, setSearchQuery] = useState("")
 
     const getIconUrl = (icon) => {
         if (icon.startsWith("custom-")) return null;
-        return `https://skillicons.dev/icons?i=${icon}&theme=dark`;
+        return `https://skillicons.dev/icons?i=${icon}&theme=light`;
     }
 
     const CustomIcon = ({ type }) => {
-        if (type === "custom-genai") return <Sparkles className="text-purple-400" size={32} />;
-        if (type === "custom-rag") return <Database className="text-emerald-400" size={32} />;
-        if (type === "custom-llm") return <Brain className="text-pink-400" size={32} />;
-        if (type === "custom-prompt") return <Cpu className="text-amber-400" size={32} />;
+        if (type === "custom-genai") return <Sparkles className="text-purple-500" size={32} />;
+        if (type === "custom-rag") return <Database className="text-emerald-500" size={32} />;
+        if (type === "custom-llm") return <Brain className="text-pink-500" size={32} />;
+        if (type === "custom-prompt") return <Cpu className="text-amber-500" size={32} />;
         if (type === "custom-openai") return <img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg" alt="OpenAI" className="w-8 h-8" />;
         if (type === "custom-n8n") return <img src="https://vectorseek.com/wp-content/uploads/2025/07/N8n-Ai-Logo-PNG-SVG-Vector.png" alt="n8n" className="w-8 h-8 rounded-full" />;
         if (type === "custom-vercel") return <img src="https://cdn.worldvectorlogo.com/logos/vercel.svg" alt="Vercel" className="w-8 h-8" />;
@@ -68,10 +99,10 @@ export default function Skills() {
     })
 
     return (
-        <section id="skills" className="py-24 relative overflow-hidden">
+        <section id="skills" className="py-32 relative overflow-hidden bg-slate-50">
             {/* Background Elements */}
-            <div className="absolute top-20 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -z-10" />
-            <div className="absolute bottom-20 left-0 w-72 h-72 bg-secondary/5 rounded-full blur-[80px] -z-10" />
+            <div className="absolute top-20 right-0 w-96 h-96 bg-blue-100 rounded-full blur-[100px] -z-10 opacity-60" />
+            <div className="absolute bottom-20 left-0 w-72 h-72 bg-purple-100 rounded-full blur-[80px] -z-10 opacity-60" />
 
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
 
@@ -80,34 +111,36 @@ export default function Skills() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-12"
+                    className="text-center mb-16"
                 >
-                    <span className="text-secondary text-sm tracking-widest uppercase font-semibold">Technical Arsenal</span>
-                    <h2 className="text-4xl md:text-5xl font-bold mt-2 text-textMain mb-6">Explore My Skills</h2>
+                    <span className="text-primary text-sm tracking-widest uppercase font-bold">Technical Arsenal</span>
+                    <h2 className="text-4xl md:text-5xl font-display font-bold mt-3 text-gray-900 mb-8">
+                        Explore My <span className="text-gradient">Skills</span>
+                    </h2>
 
                     {/* Search Bar */}
-                    <div className="relative max-w-lg mx-auto mb-8">
+                    <div className="relative max-w-lg mx-auto mb-10 group">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <Search className="h-5 w-5 text-textSoft" />
+                            <Search className="h-5 w-5 text-gray-400 group-focus-within:text-primary transition-colors" />
                         </div>
                         <input
                             type="text"
-                            placeholder="Search skills..."
+                            placeholder="Search technologies..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-12 pr-4 py-3 bg-black/5 border border-black/10 rounded-2xl text-textMain placeholder-textSoft focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
+                            className="w-full pl-12 pr-4 py-4 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary/50 focus:ring-4 focus:ring-primary/10 transition-all shadow-sm"
                         />
                     </div>
 
                     {/* Filter Tabs */}
-                    <div className="flex flex-wrap justify-center gap-3">
+                    <div className="flex flex-wrap justify-center gap-2">
                         {CATEGORIES.map((category) => (
                             <button
                                 key={category}
                                 onClick={() => setActiveCategory(category)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeCategory === category
-                                    ? "bg-primary text-white shadow-lg shadow-primary/25"
-                                    : "bg-black/5 text-textSoft hover:bg-black/10 hover:text-textMain border border-black/5"
+                                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category
+                                    ? "bg-primary text-white shadow-lg shadow-primary/30"
+                                    : "bg-white text-gray-500 hover:text-primary hover:bg-gray-50 border border-gray-200"
                                     }`}
                             >
                                 {category}
@@ -123,31 +156,12 @@ export default function Skills() {
                 >
                     <AnimatePresence mode='popLayout'>
                         {filteredSkills.map((skill) => (
-                            <motion.div
-                                layout
+                            <SkillCard
                                 key={skill.name}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.8 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                                className="glass-card p-6 rounded-3xl flex flex-col items-center justify-center gap-4 hover:border-primary/30 hover:bg-black/5 transition-colors group cursor-default"
-                            >
-                                <div className="w-12 h-12 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                                    {skill.icon.startsWith("custom-") ? (
-                                        <CustomIcon type={skill.icon} />
-                                    ) : (
-                                        <img
-                                            src={getIconUrl(skill.icon)}
-                                            alt={skill.name}
-                                            className="w-full h-full object-contain filter drop-shadow-lg"
-                                            loading="lazy"
-                                        />
-                                    )}
-                                </div>
-                                <span className="text-textSoft font-medium text-sm text-center group-hover:text-textMain transition-colors">
-                                    {skill.name}
-                                </span>
-                            </motion.div>
+                                skill={skill}
+                                getIconUrl={getIconUrl}
+                                CustomIcon={CustomIcon}
+                            />
                         ))}
                     </AnimatePresence>
                 </motion.div>
@@ -159,10 +173,10 @@ export default function Skills() {
                         animate={{ opacity: 1 }}
                         className="text-center py-20"
                     >
-                        <div className="inline-flex p-4 rounded-full bg-black/5 mb-4">
-                            <Search className="h-8 w-8 text-textSoft" />
+                        <div className="inline-flex p-4 rounded-full bg-white mb-4 shadow-sm animate-bounce">
+                            <Search className="h-8 w-8 text-gray-300" />
                         </div>
-                        <p className="text-textSoft">No skills found matching "{searchQuery}"</p>
+                        <p className="text-gray-500 font-medium">No skills found matching "{searchQuery}"</p>
                     </motion.div>
                 )}
 

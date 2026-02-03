@@ -16,12 +16,19 @@ export const projectData = {
             { title: "Trust-First Logistics", desc: "'Pack Order' video upload feature for sellers to prove authenticity and quality before shipping." },
             { title: "Automated Payouts", desc: "Financial module for admin to calculate and process seller earnings and delivery agent fees." }
         ],
+        images: [
+            "/src/assets/images/udrakala-homepage.png",
+            "/src/assets/images/udrakala-dashboard.png",
+            "/src/assets/images/udrakala-mobile.png"
+        ],
         techStack: {
             Frontend: ["React.js", "Vite", "Tailwind CSS (Glassmorphism UI)", "Framer Motion (Animations)"],
             Backend: ["Java Spring Boot", "Spring Security (JWT Auth)", "Hibernate/JPA"],
             Database: ["MySQL"],
             AIChat: ["Custom keyword-based Intent Engine, integrated with product database"],
             Tools: ["Maven", "Git", "Postman"]
-        }
+        },
+        liveUrl: "https://udrakala-demo.example.com",
+        githubUrl: "https://github.com/yourusername/udrakala"
     }
 };

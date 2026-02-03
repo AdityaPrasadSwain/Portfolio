@@ -1,168 +1,156 @@
-import { motion } from 'framer-motion'
-import { User, CheckCircle2, Cpu, Zap, Code } from 'lucide-react'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { profile } from '../data/profile'
-
-
+import { Server, Globe, Cpu, ArrowUpRight, Code, Sparkles } from 'lucide-react'
 
 export default function About() {
-    const atsKeywords = [
-        "Java Backend", "Spring Boot", "RESTful API", "Microservices",
-        "PostgreSQL", "MongoDB", "React.js", "AI Integration",
-        "LLM Agents", "RAG Pipeline", "Prompt Engineering",
-        "Clean Code", "MVC Architecture", "Git Version Control", "Maven"
+    const containerRef = useRef()
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    })
+
+    const y = useTransform(scrollYProgress, [0, 1], [100, -100])
+
+    const stats = [
+        { label: "Years Experience", value: "2+" },
+        { label: "Projects Built", value: "15+" },
+        { label: "Coffees Brewed", value: "∞" },
     ]
 
     return (
-        <section id="about" className="py-24 relative overflow-hidden">
+        <section id="about" ref={containerRef} className="py-32 relative overflow-hidden bg-slate-50 border-t border-gray-200">
+            {/* Background Decor */}
+            <div className="absolute top-1/3 left-0 w-72 h-72 bg-blue-100 rounded-full blur-[80px] opacity-60 pointer-events-none" />
+            <div className="absolute bottom-1/3 right-0 w-72 h-72 bg-indigo-100 rounded-full blur-[80px] opacity-60 pointer-events-none" />
+
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="flex flex-col items-center mb-16 text-center"
-                >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-secondary text-xs uppercase tracking-wider mb-4">
-                        <User size={14} />
-                        <span>About The Developer</span>
+                    {/* Left Column: Developer Card Visual */}
+                    <div className="relative group perspective-1000">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-primary to-blue-600 rounded-3xl blur-[20px] opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+
+                        <motion.div
+                            style={{ y }}
+                            className="relative bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 overflow-hidden"
+                        >
+                            {/* Card Header */}
+                            <div className="flex justify-between items-start mb-8">
+                                <div className="p-3 bg-blue-50 rounded-2xl text-primary">
+                                    <Cpu size={32} />
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Status</p>
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50 rounded-full text-green-600 text-sm font-bold mt-1 border border-green-100">
+                                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                        Open to Work
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Card Content (Abstract representation of a developer) */}
+                            <div className="space-y-6 relative z-10">
+                                <div>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">{profile.name}</h3>
+                                    <p className="text-primary font-medium">{profile.roles[0]}</p>
+                                </div>
+
+                                <div className="flex flex-wrap gap-2">
+                                    {profile.roles.slice(1).map((role, i) => (
+                                        <span key={i} className="px-3 py-1 bg-gray-50 border border-gray-200 text-gray-500 text-xs rounded-lg font-medium">
+                                            {role}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Decorative Code Elements */}
+                            <div className="absolute -bottom-10 -right-10 opacity-[0.05] text-primary transform rotate-12 pointer-events-none">
+                                <Code size={200} />
+                            </div>
+                        </motion.div>
+
+                        {/* Floating Badge */}
+                        <motion.div
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-xl border border-gray-100 flex items-center gap-3 z-20"
+                        >
+                            <div className="p-2 bg-orange-50 rounded-full text-orange-500">
+                                <Sparkles size={20} />
+                            </div>
+                            <div>
+                                <p className="text-xs text-gray-400 font-bold uppercase">Focus</p>
+                                <p className="text-gray-900 font-bold text-sm">AI Integration</p>
+                            </div>
+                        </motion.div>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-textMain mb-6">
-                        Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Digital Solutions</span>
-                    </h2>
-                </motion.div>
 
-                {/* Bento Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
+                    {/* Right Column: Content */}
+                    <div>
+                        <motion.span
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="text-primary font-bold tracking-widest text-sm uppercase block mb-4"
+                        >
+                            Who I Am
+                        </motion.span>
 
-                    {/* Card 1: The Vision (Large) */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="glass-card md:col-span-2 p-8 rounded-3xl relative overflow-hidden group"
-                    >
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -z-10 transition-opacity group-hover:opacity-100 opacity-50" />
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6 leading-tight"
+                        >
+                            Engineer. Architect. <br />
+                            <span className="text-gradient">Problem Solver.</span>
+                        </motion.h2>
 
-                        <div className="flex items-center gap-4 mb-6">
-                            <div className="p-3 rounded-2xl bg-blue-500/10 text-blue-400">
-                                <Code size={24} />
-                            </div>
-                            <h3 className="text-2xl font-bold text-textMain">The Vision</h3>
-                        </div>
-
-                        <p className="text-textSoft text-lg leading-relaxed text-justify">
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="text-gray-600 text-lg leading-relaxed mb-8 text-justify"
+                        >
                             {profile.objective}
-                        </p>
-                    </motion.div>
+                        </motion.p>
 
-                    {/* Card 2: Stats / Highlight (Small) */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="glass-card p-8 rounded-3xl flex flex-col items-center justify-center text-center relative overflow-hidden"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-50" />
-                        <div className="relative z-10">
-                            <div className="text-5xl font-bold text-textMain mb-2">3+</div>
-                            <div className="text-textSoft text-sm uppercase tracking-wider">Years Coding</div>
-                            <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mt-4" />
-                        </div>
-                    </motion.div>
-
-                    {/* Card 3: Tech Arsenal (Tall/Medium) */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="glass-card p-0 rounded-3xl relative overflow-hidden flex flex-col"
-                    >
-                        <div className="absolute bottom-0 right-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl -z-10" />
-
-                        <div className="p-8 pb-4 flex items-center gap-3">
-                            <Cpu className="text-purple-400" size={24} />
-                            <h3 className="text-xl font-bold text-textMain">Tech Arsenal</h3>
-                        </div>
-
-                        <div className="flex-1 flex flex-col justify-center gap-6 py-6 overflow-hidden">
-                            {/* Row 1: Left Scroll */}
-                            <div className="flex overflow-hidden">
-                                <motion.div
-                                    className="flex gap-6 px-3"
-                                    animate={{ x: ["0%", "-50%"] }}
-                                    transition={{ ease: "linear", duration: 20, repeat: Infinity }}
-                                >
-                                    {[...atsKeywords.slice(0, 5), ...atsKeywords.slice(0, 5)].map((keyword, i) => (
-                                        <div key={`r1-${i}`} className="whitespace-nowrap px-4 py-2 bg-black/5 border border-black/10 rounded-xl text-purple-600 text-sm font-medium">
-                                            {keyword}
-                                        </div>
-                                    ))}
-                                </motion.div>
+                        {/* Detailed Features */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow group flex items-start gap-4">
+                                <div className="p-3 bg-blue-50 rounded-xl text-primary mt-1 group-hover:scale-110 transition-transform">
+                                    <Server size={20} />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-gray-900 text-lg">Backend Systems</h4>
+                                    <p className="text-sm text-gray-500 leading-snug mt-1">Scalable architectures using Java, Spring Boot & Microservices.</p>
+                                </div>
                             </div>
-
-                            {/* Row 2: Right Scroll */}
-                            <div className="flex overflow-hidden">
-                                <motion.div
-                                    className="flex gap-6 px-3"
-                                    animate={{ x: ["-50%", "0%"] }}
-                                    transition={{ ease: "linear", duration: 25, repeat: Infinity }}
-                                >
-                                    {[...atsKeywords.slice(5, 10), ...atsKeywords.slice(5, 10)].map((keyword, i) => (
-                                        <div key={`r2-${i}`} className="whitespace-nowrap px-4 py-2 bg-black/5 border border-black/10 rounded-xl text-blue-600 text-sm font-medium">
-                                            {keyword}
-                                        </div>
-                                    ))}
-                                </motion.div>
-                            </div>
-
-                            {/* Row 3: Left Scroll */}
-                            <div className="flex overflow-hidden">
-                                <motion.div
-                                    className="flex gap-6 px-3"
-                                    animate={{ x: ["0%", "-50%"] }}
-                                    transition={{ ease: "linear", duration: 22, repeat: Infinity }}
-                                >
-                                    {[...atsKeywords.slice(10, 15), ...atsKeywords.slice(10, 15)].map((keyword, i) => (
-                                        <div key={`r3-${i}`} className="whitespace-nowrap px-4 py-2 bg-black/5 border border-black/10 rounded-xl text-emerald-600 text-sm font-medium">
-                                            {keyword}
-                                        </div>
-                                    ))}
-                                </motion.div>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Card 4: The Mindset (Wide) */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        className="glass-card md:col-span-2 p-8 rounded-3xl relative overflow-hidden"
-                    >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500/50 to-transparent" />
-
-                        <div className="flex items-center justify-between mb-6">
-                            <div className="flex items-center gap-3">
-                                <Zap className="text-emerald-400" size={24} />
-                                <h3 className="text-xl font-bold text-textMain">The Mindset</h3>
+                            <div className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow group flex items-start gap-4">
+                                <div className="p-3 bg-indigo-50 rounded-xl text-secondary mt-1 group-hover:scale-110 transition-transform">
+                                    <Globe size={20} />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-gray-900 text-lg">Modern Frontend</h4>
+                                    <p className="text-sm text-gray-500 leading-snug mt-1">Responsive experiences with React, Tailwind & Framer Motion.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {profile.skills.soft.map((skill) => (
-                                <div key={skill} className="flex items-center gap-3 p-3 rounded-xl bg-black/5 border border-black/5 hover:border-black/10 transition-colors group">
-                                    <div className="w-2 h-2 rounded-full bg-emerald-400 group-hover:scale-150 transition-transform" />
-                                    <span className="text-textMain font-medium">{skill}</span>
+                        {/* Stats */}
+                        <div className="flex gap-12 border-t border-gray-200 pt-8">
+                            {stats.map((stat, i) => (
+                                <div key={i}>
+                                    <h4 className="text-4xl font-bold text-gray-900">{stat.value}</h4>
+                                    <p className="text-sm text-gray-500 font-medium mt-1">{stat.label}</p>
                                 </div>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
-
             </div>
         </section>
     )
