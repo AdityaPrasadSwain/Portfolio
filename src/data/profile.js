@@ -10,11 +10,11 @@ export const profile = {
         "AI Integration Specialist",
         "System Architect"
     ],
-    objective: "A results-oriented Backend Developer and Systems Architect specializing in building scalable APIs, optimizing database performance, and integrating advanced AI solutions. With a strong foundation in Java, Spring Boot, and modern web technologies, I leverage analytical problem-solving to deliver robust enterprise-grade applications. Committed to continuous technical evolution, I actively explore emerging frontiers in Prompt Engineering, LLM Agents, and RAG pipelines to drive innovation and efficiency.",
+    objective: "A results-oriented Backend Developer and Systems Architect specializing in building scalable APIs, optimizing database performance, and architecting robust distributed systems. With a strong foundation in Java, Spring Boot, and modern enterprise technologies, I leverage analytical problem-solving to deliver high-performance applications. Committed to technical excellence, I specialize in Enterprise Java, Microservices, and secure authentication flows to drive innovation and efficiency.",
     objectiveVariants: {
-        short: "Backend Developer and AI enthusiast specializing in Java, Spring Boot, and scalable API architecture. I build high-performance systems and integrate modern AI solutions like LLMs and RAG agents to solve complex problems efficiency.",
-        casual: "Hi! I'm Aditya, a backend developer from Odisha who loves building logic that actually works. I spend my days coding in Java and Spring Boot, optimizing databases, and tinkering with the latest AI tools like OpenAI's API. Outside of code, you'll find me on the Kabaddi field or learning something new. I'm all about writing clean code and being a dependable teammate.",
-        corporate: "A results-oriented Backend Developer and Systems Architect specializing in building scalable APIs, optimizing database performance, and integrating advanced AI solutions. With a strong foundation in Java, Spring Boot, and modern web technologies, I leverage analytical problem-solving to deliver robust enterprise-grade applications. Committed to continuous technical evolution, I actively explore emerging frontiers in Prompt Engineering, LLM Agents, and RAG pipelines to drive innovation and efficiency."
+        short: "Backend Developer specializing in Java, Spring Boot, and distributed system architecture. I build high-performance backend systems and optimize data layers for enterprise-grade applications.",
+        casual: "Hi! I'm Aditya, a backend developer from Odisha who loves building logic that actually works. I spend my days coding in Java and Spring Boot, optimizing databases, and designing scalable microservices. Outside of code, you'll find me on the Kabaddi field or learning something new. I'm all about writing clean code and being a dependable teammate.",
+        corporate: "A results-oriented Backend Developer and Systems Architect specializing in building scalable APIs, optimizing database performance, and architecting robust distributed systems. With a strong foundation in Java, Spring Boot, and modern enterprise technologies, I leverage analytical problem-solving to deliver high-performance applications."
     },
     education: [
         {
@@ -37,10 +37,11 @@ export const profile = {
         }
     ],
     skills: {
-        backend: ["Java", "Spring Boot", "REST APIs", "PostgreSQL", "MongoDB", "Maven"],
+        backend: ["Java", "Spring Boot", "Hibernate", "JPA", "Redis", "Kafka", "REST APIs", "PostgreSQL", "MongoDB", "Maven"],
+        auth_tools: ["OAuth2", "JWT", "Spring Security", "Docker", "Git", "Postman"],
+        ai_future: ["Prompt Engineering", "OpenAI", "Antigravity"],
         frontend: ["React JS", "JavaScript", "HTML", "CSS", "Tailwind"],
-        ai: ["Prompt Engineering", "LLM Integration", "AI Agents", "RAG Systems", "OpenAI API", "n8n"],
-        soft: ["Problem Solving", "Logical Thinking", "Continuous Learning", "Team Collaboration"]
+        soft: ["Problem Solving", "Logical Thinking", "System Architecture", "Team Collaboration"]
     },
     internship: {
         company: "Zidio Private Limited",

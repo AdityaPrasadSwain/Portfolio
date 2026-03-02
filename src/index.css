@@ -5,23 +5,13 @@
 @tailwind utilities;
 
 @layer base {
-
-  /* Smooth scrolling used by Lenis or native */
   html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    width: 100%;
-    color-scheme: light;
+    @apply scroll-smooth;
+    color-scheme: dark;
   }
 
   body {
-    @apply bg-background text-textMain font-sans;
-    background-color: #f8fafc;
-    /* Force light theme background */
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
+    @apply bg-background text-textMain font-body selection:bg-primary/30 selection:text-white overflow-x-hidden;
   }
 
   h1,
@@ -30,38 +20,103 @@
   h4,
   h5,
   h6 {
-    @apply font-display;
+    @apply font-display tracking-tight text-white;
+  }
+}
+
+@layer components {
+  .grain-overlay {
+    @apply fixed inset-0 pointer-events-none z-[9999] opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  ::selection {
-    @apply bg-primary/30 text-primary;
+  .glass-main {
+    @apply bg-white/[0.01] backdrop-blur-[20px] border border-white/5 shadow-2xl;
+  }
+
+  .glass-card-premium {
+    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/5 shadow-2xl;
+  }
+
+  .input-cinematic {
+    @apply w-full bg-white/[0.02] border border-white/5 rounded-2xl px-8 py-5 text-white placeholder-white/20 outline-none transition-all duration-500;
+  }
+
+  .input-cinematic:focus {
+    @apply border-primary/50 bg-white/[0.05];
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 10s linear infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  .text-reveal {
+    @apply overflow-hidden inline-block align-bottom;
+  }
+
+  .text-reveal span {
+    @apply inline-block animate-reveal;
   }
 }
 
 @layer utilities {
+
+  /* --- Premium Glassmorphism --- */
   .glass-card {
-    /* Frosted glass for light theme needs high opacity and blur */
-    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-xl;
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10;
   }
 
   .glass-nav {
-    @apply bg-white/80 backdrop-blur-lg border-b border-gray-200/50 shadow-sm;
+    @apply bg-black/40 backdrop-blur-lg border border-white/10;
+  }
+
+  .glass-card-glow {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/5 hover:border-primary/30 transition-all duration-500 shadow-2xl;
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+  }
+
+  .glass-card-glow:hover {
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-nav {
+    @apply bg-background/40 backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/5 shadow-2xl;
   }
 
   .text-glow {
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    text-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
   }
 
   .neon-border {
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.2), inset 0 0 10px rgba(56, 189, 248, 0.1);
+    @apply border border-primary/20 shadow-[0_0_20px_rgba(56, 189, 248, 0.15)];
   }
 
-  .custom-text-shadow {
-    text-shadow: 0 0 30px rgba(2, 132, 199, 0.2);
+  .text-glow {
+    text-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+  }
+
+  .neon-border {
+    @apply border border-primary/20 shadow-[0_0_20px_rgba(56, 189, 248, 0.15)];
   }
 
   .text-gradient {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-secondary;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-secondary;
   }
 
   /* Mask gradient for scrolling marquees */
@@ -72,17 +127,16 @@
 }
 
 /* Custom Scrollbar */
-/* Custom Scrollbar Global */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-[#f1f5f9];
+  @apply bg-background;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-400 rounded-full hover:bg-slate-500 transition-colors border-2 border-[#f1f5f9];
+  @apply bg-slate-800 rounded-full hover:bg-slate-700 transition-colors border-2 border-background;
 }
 
 /* Premium Modal Scrollbar */
@@ -95,12 +149,12 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Canvas z-index handling */

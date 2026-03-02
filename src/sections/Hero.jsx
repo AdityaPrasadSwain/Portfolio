@@ -1,137 +1,112 @@
-import { useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import Typewriter from 'typewriter-effect'
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react'
-import { profile } from '../data/profile'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowDownRight, Sparkles, Github, Linkedin, Mail, ArrowRight } from 'lucide-react';
+import profile from '../data/profile';
 
-export default function Hero() {
-
+const Hero = () => {
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-            {/* Background Blobs (Soft Pastels) */}
-            <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[100px] animate-blob" />
-            <div className="absolute top-[20%] right-[-10%] w-[400px] h-[400px] bg-blue-200/40 rounded-full blur-[100px] animate-blob animation-delay-2000" />
-            <div className="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] bg-pink-200/30 rounded-full blur-[100px] animate-blob animation-delay-4000" />
+        <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-background">
+            {/* Cinematic Background Elements */}
+            <div className="absolute inset-0 z-0">
+                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full animate-pulse-slow" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[120px] rounded-full animate-pulse-slow" style={{ animationDelay: '2s' }} />
+                <div className="grain-overlay" />
+            </div>
 
-            {/* Soft Grid Overlay */}
-            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] pointer-events-none" />
-
-            <div className="container mx-auto px-6 relative z-10 text-center">
-
-                {/* Badge */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm mb-8"
-                >
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-gray-600 text-sm font-medium tracking-wide">Available for new projects</span>
-                </motion.div>
-
-                {/* Main Heading */}
-                <div className="mb-6">
-                    <motion.h1
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-5xl mx-auto text-center md:text-left">
+                    {/* Status Badge */}
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-textMain leading-tight mb-2"
+                        className="inline-flex items-center gap-3 px-6 py-2.5 glass-main rounded-full mb-12 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border border-white/10"
                     >
-                        Hi, I'm <span className="text-gradient">{profile.name.split(' ')[0]}</span>
-                    </motion.h1>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="text-2xl md:text-3xl lg:text-4xl text-textSoft font-light h-[60px]"
-                    >
-                        <Typewriter
-                            options={{
-                                strings: [
-                                    "Full Stack Developer",
-                                    "UI/UX Enthusiast",
-                                    "Problem Solver",
-                                    "Tech Visionary"
-                                ],
-                                autoStart: true,
-                                loop: true,
-                                delay: 50,
-                                deleteSpeed: 30,
-                            }}
-                        />
+                        <span className="relative flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <span className="text-[10px] font-bold tracking-[0.2em] text-white/70 uppercase">Available for new opportunities</span>
                     </motion.div>
-                </div>
 
-                {/* Description */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed mb-10"
-                >
-                    Transforming complex problems into elegant, minimalist digital solutions.
-                    I build web applications that are as beautiful as they are functional.
-                </motion.p>
-
-                {/* CTA Buttons */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                >
-                    <a
-                        href="#projects"
-                        className="px-8 py-4 bg-primary text-white rounded-full font-semibold text-lg hover:bg-blue-600 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center gap-2"
-                    >
-                        View My Work <ArrowRight size={20} />
-                    </a>
-
-                    <a
-                        href="/resume.pdf"
-                        download="Aditya_Prasad_Resume.pdf"
-                        className="px-8 py-4 bg-white text-textMain border border-gray-200 rounded-full font-semibold text-lg hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm hover:shadow-md flex items-center gap-2"
-                    >
-                        Resume
-                    </a>
-                </motion.div>
-
-                {/* Social Links */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1.2 }}
-                    className="mt-16 flex items-center justify-center gap-6"
-                >
-                    {[
-                        { icon: Github, link: profile.social.github },
-                        { icon: Linkedin, link: profile.social.linkedin },
-                        { icon: Mail, link: `mailto:${profile.email}` }
-                    ].map((item, index) => (
-                        <a
-                            key={index}
-                            href={item.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="p-3 bg-white border border-gray-200 rounded-full text-gray-500 hover:text-primary hover:border-primary/50 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+                    {/* Main Headline */}
+                    <div className="relative mb-12">
+                        <motion.h1
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                            className="text-[12vw] md:text-[8vw] lg:text-[7.5vw] font-display font-extrabold leading-[0.9] tracking-tighter text-white mb-4"
                         >
-                            <item.icon size={24} />
-                        </a>
-                    ))}
-                </motion.div>
+                            <span className="block italic font-light text-primary/80">Designing</span>
+                            <span className="block">Digital Architecture</span>
+                        </motion.h1>
+
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.5, duration: 1 }}
+                            className="absolute -right-4 top-1/2 -translate-y-1/2 hidden lg:block"
+                        >
+                            <div className="glass-card-premium p-6 rounded-3xl rotate-12 backdrop-blur-xl">
+                                <Sparkles className="text-primary mb-2" size={32} />
+                                <p className="text-xs font-bold text-white leading-tight uppercase tracking-widest">Premium<br />Experience</p>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Description & CTAs */}
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.8, duration: 0.8 }}
+                            className="md:col-span-7"
+                        >
+                            <p className="text-xl md:text-2xl text-textSoft font-light leading-relaxed max-w-xl">
+                                I am Aditya, a <span className="text-white font-medium">Backend Specialist</span> & <span className="text-white font-medium">Systems Architect</span> crafting high-performance digital experiences with Java & Spring Boot.
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1, duration: 1 }}
+                            className="md:col-span-5 flex flex-col gap-6"
+                        >
+                            <div className="flex gap-4">
+                                <a href="#projects" className="group relative flex-1 h-16 flex items-center justify-center bg-white text-black font-bold rounded-2xl overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]">
+                                    <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity" />
+                                    <span>View Projects</span>
+                                    <ArrowDownRight className="ml-2 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
+                                </a>
+                                <a href="#contact" className="w-16 h-16 flex items-center justify-center glass-main border border-white/10 rounded-2xl hover:bg-white/5 transition-colors">
+                                    <Mail className="text-white" />
+                                </a>
+                            </div>
+
+                            <div className="flex items-center gap-6 px-4">
+                                <div className="h-[1px] flex-1 bg-white/10" />
+                                <div className="flex gap-4">
+                                    <a href={profile.socials.github} target="_blank" rel="noreferrer" className="text-textSoft hover:text-white transition-colors"><Github size={20} /></a>
+                                    <a href={profile.socials.linkedin} target="_blank" rel="noreferrer" className="text-textSoft hover:text-white transition-colors"><Linkedin size={20} /></a>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
+
             {/* Scroll Indicator */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 pointer-events-none"
+                transition={{ delay: 2 }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
             >
-                <span className="text-[10px] text-textSoft uppercase tracking-[0.3em] font-semibold">Scroll</span>
-                <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-primary to-transparent animate-pulse" />
+                <div className="text-[10px] font-bold text-textSoft uppercase tracking-[0.4em] rotate-90 mb-8">Scroll</div>
+                <div className="w-[1px] h-24 bg-gradient-to-b from-primary via-white/20 to-transparent" />
             </motion.div>
-
         </section>
-    )
-}
+    );
+};
+
+export default Hero;

@@ -22,7 +22,7 @@ export default function ProjectDetails({ project, onClose }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-slate-900/40 backdrop-blur-lg"
+                className="fixed inset-0 z-[100] flex items-start justify-center p-4 pt-8 md:pt-12 md:p-8 bg-slate-900/40 backdrop-blur-lg overflow-y-auto"
                 onClick={onClose}
             >
                 <motion.div

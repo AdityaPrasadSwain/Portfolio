@@ -1,104 +1,139 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { profile } from '../data/profile'
-import ProjectDetails from '../components/ProjectDetails'
-import { Github, ArrowUpRight } from 'lucide-react'
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Github, ExternalLink, ArrowRight, X } from 'lucide-react';
+import profile from '../data/profile';
 
-export default function Projects() {
-    const [selectedProject, setSelectedProject] = useState(null)
+const Projects = () => {
+    const [selectedProject, setSelectedProject] = useState(null);
 
     return (
-        <section id="projects" className="py-32 relative bg-slate-50">
-            {/* Project Details Overlay */}
-            <ProjectDetails project={selectedProject} onClose={() => setSelectedProject(null)} />
-
-            <div className="container mx-auto px-6 max-w-7xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-16 md:mb-24 text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-6"
-                >
-                    <div>
-                        <span className="text-primary text-sm tracking-widest uppercase font-bold mb-2 block">Selected Works</span>
-                        <h2 className="text-4xl md:text-6xl font-display font-bold text-gray-900 leading-tight">
-                            Recent <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">Projects</span>
+        <section id="projects" className="py-32 relative bg-background overflow-hidden">
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-7xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="mb-24 text-center md:text-left"
+                    >
+                        <h2 className="text-7xl md:text-9xl font-display font-black text-white tracking-tighter mb-8 leading-none">
+                            WORKS<span className="text-primary italic">.</span>
                         </h2>
+                        <div className="h-1 w-32 bg-primary mb-12" />
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        {profile.projects.map((project, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="group cursor-pointer"
+                                onClick={() => setSelectedProject(project)}
+                            >
+                                <div className="relative aspect-[16/10] rounded-[3rem] overflow-hidden glass-card-premium border border-white/5 mb-8">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
+
+                                    {/* Placeholder for project image/background */}
+                                    <div className="absolute inset-0 bg-white/5 z-0 group-hover:scale-110 transition-transform duration-1000 flex items-center justify-center">
+                                        <div className="text-primary opacity-20 select-none font-black text-8xl uppercase tracking-tighter">
+                                            {project.title.charAt(0)}
+                                        </div>
+                                    </div>
+
+                                    <div className="absolute bottom-10 left-10 z-20">
+                                        <div className="flex gap-3 mb-4">
+                                            {project.technologies.slice(0, 3).map(tech => (
+                                                <span key={tech} className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-bold text-white/80 uppercase tracking-widest border border-white/10">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <h3 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tighter group-hover:translate-x-2 transition-transform duration-500">
+                                            {project.title}
+                                        </h3>
+                                    </div>
+
+                                    <div className="absolute top-10 right-10 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                                        <div className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary transition-colors">
+                                            <ArrowRight size={24} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
-                    <p className="text-gray-500 max-w-md text-lg leading-relaxed hidden md:block">
-                        A collection of digital products, experiments, and open source contributions that I've built.
-                    </p>
-                </motion.div>
+                </div>
+            </div>
 
-                {/* Grid Layout instead of Carousel for "Proper" display */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-                    {profile.projects.map((project, index) => (
+            {/* Project Modal */}
+            <AnimatePresence>
+                {selectedProject && (
+                    <div className="fixed inset-0 z-[200] flex items-center justify-center p-6 sm:p-12">
                         <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            onClick={() => setSelectedProject(project)}
-                            className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer border border-gray-100 flex flex-col h-full"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 bg-black/90 backdrop-blur-2xl"
+                            onClick={() => setSelectedProject(null)}
+                        />
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 40 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 40 }}
+                            className="glass-card-premium w-full max-w-6xl rounded-[4rem] overflow-hidden relative z-10 border border-white/20 shadow-2xl overflow-y-auto max-h-[90vh]"
                         >
-                            {/* Card Image / Gradient Placeholder */}
-                            <div className="h-64 bg-gradient-to-br from-blue-50 to-indigo-50 relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-blue-50/80 transition-colors">
-                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                    <ArrowUpRight size={20} className="text-primary" />
+                            <button
+                                onClick={() => setSelectedProject(null)}
+                                className="absolute top-10 right-10 w-12 h-12 rounded-full glass-main flex items-center justify-center text-white hover:bg-white/10 z-30 transition-all"
+                            >
+                                <X size={24} />
+                            </button>
+
+                            <div className="grid grid-cols-1 lg:grid-cols-2">
+                                <div className="aspect-square bg-white/5 relative flex items-center justify-center">
+                                    <h2 className="text-primary font-black text-9xl p-20 opacity-20 uppercase select-none tracking-tighter text-center">
+                                        {selectedProject.title}
+                                    </h2>
                                 </div>
+                                <div className="p-12 md:p-20 flex flex-col justify-center">
+                                    <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-8">Selected Project</span>
+                                    <h2 className="text-5xl md:text-7xl font-display font-black text-white tracking-tighter mb-8 leading-none">
+                                        {selectedProject.title}
+                                    </h2>
+                                    <p className="text-textSoft text-xl md:text-2xl font-light leading-relaxed mb-12">
+                                        {selectedProject.description}
+                                    </p>
 
-                                {/* Placeholder Visual representation */}
-                                <div className="text-center transform group-hover:scale-105 transition-transform duration-500">
-                                    <h3 className="text-2xl font-bold text-gray-400/30 group-hover:text-primary/20 transition-colors uppercase tracking-widest">
-                                        {project.title.substring(0, 3)}
-                                    </h3>
-                                </div>
-                            </div>
+                                    <div className="flex flex-wrap gap-3 mb-12">
+                                        {selectedProject.technologies.map(tech => (
+                                            <span key={tech} className="px-6 py-2 bg-white/5 rounded-2xl text-[10px] font-black text-white uppercase tracking-widest border border-white/10">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
 
-                            {/* Content */}
-                            <div className="p-8 flex-1 flex flex-col">
-                                <div className="flex justify-between items-start mb-4">
-                                    <span className="text-xs font-bold tracking-wider text-blue-600 uppercase bg-blue-50 px-3 py-1 rounded-full">{project.category}</span>
-                                </div>
-
-                                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
-                                    {project.title}
-                                </h3>
-
-                                <p className="text-gray-500 text-base leading-relaxed mb-6 line-clamp-3 flex-1">
-                                    {project.description}
-                                </p>
-
-                                <div className="flex flex-wrap gap-2 mt-auto">
-                                    {project.tech.slice(0, 3).map(t => (
-                                        <span key={t} className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-md border border-gray-200">
-                                            {t}
-                                        </span>
-                                    ))}
-                                    {project.tech.length > 3 && (
-                                        <span className="px-3 py-1 bg-gray-50 text-gray-400 text-xs font-medium rounded-md border border-gray-200">
-                                            +{project.tech.length - 3}
-                                        </span>
-                                    )}
+                                    <div className="flex gap-6">
+                                        {selectedProject.links?.github && (
+                                            <a href={selectedProject.links.github} target="_blank" rel="noreferrer" className="flex-1 h-16 flex items-center justify-center bg-white text-black font-bold rounded-2xl hover:bg-primary transition-colors">
+                                                <Github className="mr-2" size={20} /> Repository
+                                            </a>
+                                        )}
+                                        {selectedProject.links?.demo && (
+                                            <a href={selectedProject.links.demo} target="_blank" rel="noreferrer" className="w-16 h-16 flex items-center justify-center glass-main border border-white/10 rounded-2xl hover:bg-white/10 transition-colors">
+                                                <ExternalLink className="text-white" size={20} />
+                                            </a>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
-                    ))}
-                </div>
-
-                {/* View More Button */}
-                <div className="mt-16 text-center">
-                    <a
-                        href="https://github.com/AdityaPrasadSwain"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-white border border-gray-200 text-gray-900 rounded-full font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm group"
-                    >
-                        View More on GitHub <Github size={18} className="group-hover:rotate-12 transition-transform" />
-                    </a>
-                </div>
-            </div>
+                    </div>
+                )}
+            </AnimatePresence>
         </section>
-    )
-}
+    );
+};
+
+export default Projects;
