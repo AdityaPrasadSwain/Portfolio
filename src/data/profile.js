@@ -1,79 +1,57 @@
-export const profile = {
+const profile = {
     name: "ADITYA PRASAD SWAIN",
     initials: "APS",
     location: "Chatrapur, Odisha",
     email: "swainaditya921@gmail.com",
     phone: "+91 7815013235",
     roles: [
+        "Java Full Stack Developer",
         "Backend Developer",
-        "Creative Artist",
-        "AI Integration Specialist",
-        "System Architect"
+        "Full Stack Engineer",
+        "Product Developer"
     ],
-    objective: "A results-oriented Backend Developer and Systems Architect specializing in building scalable APIs, optimizing database performance, and architecting robust distributed systems. With a strong foundation in Java, Spring Boot, and modern enterprise technologies, I leverage analytical problem-solving to deliver high-performance applications. Committed to technical excellence, I specialize in Enterprise Java, Microservices, and secure authentication flows to drive innovation and efficiency.",
-    objectiveVariants: {
-        short: "Backend Developer specializing in Java, Spring Boot, and distributed system architecture. I build high-performance backend systems and optimize data layers for enterprise-grade applications.",
-        casual: "Hi! I'm Aditya, a backend developer from Odisha who loves building logic that actually works. I spend my days coding in Java and Spring Boot, optimizing databases, and designing scalable microservices. Outside of code, you'll find me on the Kabaddi field or learning something new. I'm all about writing clean code and being a dependable teammate.",
-        corporate: "A results-oriented Backend Developer and Systems Architect specializing in building scalable APIs, optimizing database performance, and architecting robust distributed systems. With a strong foundation in Java, Spring Boot, and modern enterprise technologies, I leverage analytical problem-solving to deliver high-performance applications."
-    },
+    objective: "I build fast and reliable systems that can handle many people at once. I combine strong backend code with clean designs to create great user experiences.",
     education: [
         {
             degree: "Bachelor in Computer Application (BCA)",
             institution: "Centurion University of Technology & Management (CUTM)",
             year: "2022-2025",
-            score: "75.20%"
+            score: "7.52 CGPA"
         },
         {
-            degree: "+2 Intermediate (Science)",
-            institution: "Arihant Higher Secondary School (CHSE Odisha)",
+            degree: "Higher Secondary (+2 Science)",
+            institution: "Arihant Higher Secoundery School",
             year: "2020-2022",
             score: "62.5%"
         },
         {
-            degree: "Matriculation",
-            institution: "Saraswati Sisu Bidya Mandir, Chatrapur, Odisha",
-            year: "2019-2020",
+            degree: "Matriculation (10th)",
+            institution: "Saraswati Sishu Vidya Mandir, Chatrapur",
+            year: "2020",
             score: "52.83%"
         }
     ],
     skills: {
-        backend: ["Java", "Spring Boot", "Hibernate", "JPA", "Redis", "Kafka", "REST APIs", "PostgreSQL", "MongoDB", "Maven"],
-        auth_tools: ["OAuth2", "JWT", "Spring Security", "Docker", "Git", "Postman"],
-        ai_future: ["Prompt Engineering", "OpenAI", "Antigravity"],
-        frontend: ["React JS", "JavaScript", "HTML", "CSS", "Tailwind"],
-        soft: ["Problem Solving", "Logical Thinking", "System Architecture", "Team Collaboration"]
+        languages: ["Java", "SQL", "JavaScript", "C++"],
+        frameworks: ["Spring Boot", "Hibernate", "JPA", "Spring Security", "React", "Tailwind"],
+        databases: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Aerospike"],
+        tools: ["Docker", "K8s", "Kafka", "RabbitMQ", "S3", "Maven", "Git", "ELK Stack", "Prometheus", "New Relic", "Swagger", "JUnit", "Mockito"],
+        ai: ["OpenAI API", "Prompt Engineering"]
     },
     internship: {
         company: "Zidio Private Limited",
-        role: "Intern (Backend-oriented)",
+        role: "Backend Intern",
         duration: "90 Days",
-        focus: "Enterprise Expense Management System"
+        focus: "Expense Management System"
     },
     projects: [
         {
             title: "Udrakala Ecommerce",
-            category: "Full Stack Platform",
-            tech: ["Spring Boot", "React", "PostgreSQL", "Microservices", "Docker"],
-            description: "A comprehensive e-commerce solution featuring multi-vendor support, secure payment gateways, and real-time order tracking. Built with a robust microservices architecture.",
-            role: "Lead Backend Architect",
-            challenge: "Odisha's rich tradition of handloom and handicrafts-spun by skilled rural artisans-faces a existential threat from mass-produced imitations and limited market access. The primary challenge was to bridge the gap between these remote artisans and a global audience, removing middlemen to ensure fair pricing while maintaining the authenticity and trust that customers demand. The platform needed to handle complex inventory variants (sarees, fabrics) and provide a seamless, culturally immersive shopping experience.",
-            solution: `UdraKala: A Direct-to-Consumer Artisan Marketplace.
-
-We built a robust, full- stack e - commerce ecosystem designed for scale and trust.UdraKala connects artisans directly with buyers through a dedicated Seller Panel, allowing them to manage their own digital storefronts.
-
-For Buyers: A premium, high- performance web app with Al - powered assistance, seamless checkout, and transparent tracking.
-
-• For Artisans: A simplified mobile - first dashboard to upload products, manage orders, and track payouts.
-
-For Ops: A comprehensive Admin Dashboard to verify seller authenticity, manage logistics, and
-
-oversee financial settlements.`,
-            features: [
-                "Multi-vendor marketplace logic",
-                "Real-time order tracking via WebSocket",
-                "Role-based access control (RBAC)",
-                "Automated invoice generation"
-            ],
+            category: "Online Store",
+            tech: ["Spring Boot", "React", "PostgreSQL", "Docker"],
+            description: "A website for artisans to sell their products directly to customers, with secure payments and order tracking.",
+            role: "Full Stack Developer",
+            challenge: "Helping rural artists sell their work worldwide by building a trusted and easy-to-use online platform.",
             links: {
                 demo: "#",
                 github: "#"
@@ -81,18 +59,11 @@ oversee financial settlements.`,
         },
         {
             title: "AI-Driven Learning Platform",
-            category: "EdTech Solution",
+            category: "Education Tool",
             tech: ["MERN Stack", "OpenAI API", "Socket.io", "Tailwind"],
-            description: "An intelligent learning management system with personalized course recommendations, AI tutors, and real-time collaboration tools for students and instructors.",
+            description: "An intelligent learning system with AI tutors and collaboration tools for students and teachers.",
             role: "Full Stack Developer",
-            challenge: "Creating a responsive AI tutor that creates context-aware quizzes based on video content in real-time.",
-            solution: "Integrated OpenAI's GPT-4 API with a RAG system to process course transcripts. Used caching mechanisms to reduce API latency by 60%.",
-            features: [
-                "AI-generated quizzes & summaries",
-                "Real-time collaborative whiteboards",
-                "Personalized learning paths",
-                "Gamified progress tracking"
-            ],
+            challenge: "Building an AI tutor that creates quizzes from videos in real-time.",
             links: {
                 demo: "#",
                 github: "#"
@@ -100,28 +71,35 @@ oversee financial settlements.`,
         },
         {
             title: "Expense Management System",
-            category: "Enterprise Tool",
+            category: "Business Tool",
             tech: ["Java", "Spring Security", "MySQL", "React", "Chart.js"],
-            description: "Scalable financial tracking system for enterprises. Automated expense reporting, approval workflows, and visualized spending analytics.",
-            role: "Backend Intern",
-            challenge: "Automating the multi-level approval workflow while maintaining strict audit logs for compliance.",
-            solution: "Designed a state-machine based workflow engine using Spring State Machine. Implemented immutable audit logging using Hibernate Envers.",
-            features: [
-                "Multi-level approval workflows",
-                "Optical Character Recognition (OCR) for receipts",
-                "Department-wise spending analytics",
-                "Policy violation alerts"
-            ],
+            description: "A system for businesses to track expenses, manage approvals, and see spending data.",
+            role: "Backend Developer",
+            challenge: "Making the approval process automatic while keeping exact records for safety.",
+            links: {
+                demo: "#",
+                github: "#"
+            }
+        },
+        {
+            title: "Event Management System",
+            category: "Ticketing System",
+            tech: ["Spring Cloud", "Kafka", "Redis", "Next.js", "PostgreSQL"],
+            description: "A fast system for booking tickets and tracking event attendees in real-time without errors.",
+            role: "Backend Developer",
+            challenge: "Preventing double-booking during busy times using the right technology to keep everything consistent.",
             links: {
                 demo: "#",
                 github: "#"
             }
         }
     ],
-    social: {
+    socials: {
         email: "mailto:swainaditya921@gmail.com",
         instagram: "https://www.instagram.com/adityaswain45/",
         linkedin: "#",
         github: "https://github.com/AdityaPrasadSwain"
     }
-}
+};
+
+export default profile;

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,10 +8,11 @@
   html {
     @apply scroll-smooth;
     color-scheme: dark;
+    background-color: #050505;
   }
 
   body {
-    @apply bg-background text-textMain font-body selection:bg-primary/30 selection:text-white overflow-x-hidden;
+    @apply bg-background text-textMain font-body selection:bg-primary/30 selection:text-black overflow-x-hidden;
   }
 
   h1,
@@ -26,109 +27,57 @@
 
 @layer components {
   .grain-overlay {
-    @apply fixed inset-0 pointer-events-none z-[9999] opacity-[0.03];
+    @apply fixed inset-0 pointer-events-none z-[9999] opacity-[0.015];
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
   .glass-main {
-    @apply bg-white/[0.01] backdrop-blur-[20px] border border-white/5 shadow-2xl;
+    @apply bg-white/[0.01] backdrop-blur-[32px] border border-white/[0.03] shadow-2xl transition-all duration-500;
   }
 
   .glass-card-premium {
-    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/5 shadow-2xl;
+    @apply bg-white/[0.02] backdrop-blur-3xl border border-white/[0.05] shadow-glass-premium hover:bg-white/[0.04] transition-all duration-700;
+  }
+
+  .glass-card-neon {
+    @apply glass-card-premium hover:border-primary/20 hover:shadow-neon-cyan;
   }
 
   .input-cinematic {
-    @apply w-full bg-white/[0.02] border border-white/5 rounded-2xl px-8 py-5 text-white placeholder-white/20 outline-none transition-all duration-500;
+    @apply w-full bg-white/[0.01] border border-white/[0.03] rounded-xl px-6 py-4 text-white placeholder-white/10 font-mono text-sm outline-none transition-all duration-500 hover:bg-white/[0.02] focus:border-primary/20 focus:bg-white/[0.03];
   }
 
-  .input-cinematic:focus {
-    @apply border-primary/50 bg-white/[0.05];
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+  .bento-card {
+    @apply relative overflow-hidden rounded-[2rem] glass-main p-8 hover:border-primary/10 transition-all duration-700 ease-premium;
   }
 
-  @keyframes shimmer {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
-  }
-
-  .animate-shimmer {
-    animation: shimmer 10s linear infinite;
-  }
-
-  .animate-spin-slow {
-    animation: spin 8s linear infinite;
-  }
-
-  .text-reveal {
-    @apply overflow-hidden inline-block align-bottom;
-  }
-
-  .text-reveal span {
-    @apply inline-block animate-reveal;
+  .magnetic-button {
+    @apply relative inline-flex items-center justify-center transition-all duration-500 will-change-transform;
   }
 }
 
 @layer utilities {
-
-  /* --- Premium Glassmorphism --- */
-  .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/10;
+  .text-gradient-neon {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary;
   }
 
-  .glass-nav {
-    @apply bg-black/40 backdrop-blur-lg border border-white/10;
+  .text-glow-cyan {
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
   }
 
-  .glass-card-glow {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/5 hover:border-primary/30 transition-all duration-500 shadow-2xl;
-    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+  .text-glow-violet {
+    text-shadow: 0 0 20px rgba(112, 0, 255, 0.4);
   }
 
-  .glass-card-glow:hover {
-    box-shadow: 0 0 40px rgba(56, 189, 248, 0.15);
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-
-  .glass-nav {
-    @apply bg-background/40 backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/5 shadow-2xl;
-  }
-
-  .text-glow {
-    text-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
-  }
-
-  .neon-border {
-    @apply border border-primary/20 shadow-[0_0_20px_rgba(56, 189, 248, 0.15)];
-  }
-
-  .text-glow {
-    text-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
-  }
-
-  .neon-border {
-    @apply border border-primary/20 shadow-[0_0_20px_rgba(56, 189, 248, 0.15)];
-  }
-
-  .text-gradient {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-secondary;
-  }
-
-  /* Mask gradient for scrolling marquees */
-  .mask-gradient {
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  .mask-radial {
+    mask-image: radial-gradient(circle, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle, black, transparent 80%);
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -136,25 +85,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-800 rounded-full hover:bg-slate-700 transition-colors border-2 border-background;
-}
-
-/* Premium Modal Scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  @apply bg-white/5 rounded-full hover:bg-white/10 transition-colors;
 }
 
 /* Canvas z-index handling */

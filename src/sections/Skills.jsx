@@ -2,165 +2,237 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Code2, Database, Layout, ShieldCheck, Sparkles,
-    Cpu, Globe, Zap, Search
+    Cpu, Globe, Zap, Search, Layers, Terminal, Activity,
+    Shield, Microscope, ExternalLink, Box, Command,
+    Workflow, Server, Cloud, Braces, Coffee, MessageSquare, Key, Github as GithubIcon, FileCode
 } from 'lucide-react';
 import profile from '../data/profile';
 
-const CustomIcon = ({ name, size = 24 }) => {
-    const icons = {
-        'Hibernate': <img src="https://www.vectorlogo.zone/logos/hibernate/hibernate-icon.svg" alt="Hibernate" className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" style={{ width: size, height: size }} />,
-        'Spring Boot': <img src="https://static-00.iconduck.com/assets.00/spring-icon-2048x2044-8840j17v.png" alt="Spring Boot" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'Kafka': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Apache_kafka_logo.svg/1200px-Apache_kafka_logo.svg.png" alt="Kafka" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'Redis': <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/1200px-Redis_Logo.svg.png" alt="Redis" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'JWT': <img src="https://jwt.io/img/pic_logo.svg" alt="JWT" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'OAuth2': <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Oauth_logo.svg" alt="OAuth2" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'OpenAI': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png" alt="OpenAI" className="w-full h-full object-contain animate-pulse" style={{ width: size, height: size }} />,
-        'React JS': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" alt="React" className="w-full h-full object-contain animate-spin-slow" style={{ width: size, height: size }} />,
-        'Antigravity': <img src="/antigravity.png" alt="Antigravity" className="w-full h-full object-contain animate-pulse shadow-[0_0_20px_rgba(56,189,248,0.5)] rounded-full" style={{ width: size, height: size }} />,
-        'Java': <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/1200px-Java_programming_language_logo.svg.png" alt="Java" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'PostgreSQL': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png" alt="PostgreSQL" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'MongoDB': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/1200px-MongoDB_Logo.svg.png" alt="MongoDB" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'Maven': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Apache_Maven_logo.svg/1200px-Apache_Maven_logo.svg.png" alt="Maven" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'Docker': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_Logo.svg/1200px-Docker_Logo.svg.png" alt="Docker" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'Git': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/1200px-Git-logo.svg.png" alt="Git" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'Postman': <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'JavaScript': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/1200px-JavaScript-logo.png" alt="JavaScript" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'HTML': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" alt="HTML" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'CSS': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png" alt="CSS" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'Tailwind': <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1200px-Tailwind_CSS_Logo.svg.png" alt="Tailwind" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'Spring Security': <img src="https://static-00.iconduck.com/assets.00/spring-security-icon-2048x2048-osgc4sc5.png" alt="Spring Security" className="w-full h-full object-contain" style={{ width: size, height: size }} />,
-        'JPA': <img src="https://www.vectorlogo.zone/logos/hibernate/hibernate-icon.svg" alt="JPA" className="w-full h-full object-contain filter brightness-150" style={{ width: size, height: size }} />,
+const CustomIcon = ({ name, size = 40, glow = 'rgba(0, 229, 255, 0.2)' }) => {
+    // Primary mapping for SkillIcons.dev
+    const skillIconsSlugs = {
+        'Redis': 'redis', 'Kafka': 'kafka', 'RabbitMQ': 'rabbitmq', 'S3': 'aws',
+        'Java': 'java', 'Spring Boot': 'spring', 'Hibernate': 'hibernate', 'JPA': 'hibernate',
+        'SQL': 'mysql', 'MongoDB': 'mongodb', 'Docker': 'docker', 'K8s': 'kubernetes',
+        'Git': 'git', 'Maven': 'maven', 'ELK Stack': 'elasticsearch', 'Prometheus': 'prometheus',
+        'Spring Security': 'spring', 'React': 'react', 'PostgreSQL': 'postgres',
+        'MySQL': 'mysql', 'Next.js': 'nextjs', 'Tailwind': 'tailwind', 'JavaScript': 'js',
+        'C++': 'cpp', 'JUnit': 'jest', 'Mockito': 'jest', 'Microservices': 'kubernetes',
+        'System Design': 'figma', 'Scalability': 'aws',
+        'OpenAI API': 'openai', 'Prompt Engineering': 'openai'
     };
-    return icons[name] || <Code2 size={size} />;
+
+    // Secondary mapping for Simple Icons (Flat logos)
+    const simpleIconsSlugs = {
+        'New Relic': 'newrelic', 'Swagger': 'swagger', 'Aerospike': 'aerospike',
+        'OAuth2': 'auth0', 'JWT': 'auth0'
+    };
+
+    // Special direct URLs
+    const directUrls = {
+    };
+
+    let iconUrl = '';
+    if (directUrls[name]) {
+        iconUrl = directUrls[name];
+    } else if (skillIconsSlugs[name]) {
+        iconUrl = `https://skillicons.dev/icons?i=${skillIconsSlugs[name]}`;
+    } else if (simpleIconsSlugs[name]) {
+        iconUrl = `https://cdn.simpleicons.org/${simpleIconsSlugs[name]}/ffffff`;
+    } else {
+        iconUrl = `https://api.dicebear.com/7.x/initials/svg?seed=${name}&backgroundColor=00e5ff&fontSize=40&fontWeight=900`;
+    }
+
+    return (
+        <div className="relative group/icon flex items-center justify-center p-2" style={{ width: size + 20, height: size + 20 }}>
+            <div
+                className="absolute inset-0 blur-2xl opacity-10 group-hover/icon:opacity-40 transition-opacity duration-700 rounded-full"
+                style={{ backgroundColor: glow }}
+            />
+            <img
+                src={iconUrl}
+                alt={name}
+                className="relative z-10 w-full h-full object-contain group-hover/icon:scale-110 transition-all duration-700 ease-premium rounded-lg"
+                style={{ filter: (name === 'LangChain' || skillIconsSlugs[name]) ? 'none' : 'drop-shadow(0 0 8px rgba(255,255,255,0.1))' }}
+                onError={(e) => {
+                    e.target.src = `https://api.dicebear.com/7.x/initials/svg?seed=${name}&backgroundColor=00e5ff&fontSize=40&fontWeight=900`;
+                }}
+            />
+        </div>
+    );
 };
 
 const Skills = () => {
-    const [activeTab, setActiveTab] = useState('backend');
     const [searchQuery, setSearchQuery] = useState('');
+    const [activeCategory, setActiveCategory] = useState('all');
 
     const categories = [
-        { id: 'backend', label: 'Backend', icon: Database },
-        { id: 'auth_tools', label: 'Auth & Tools', icon: ShieldCheck },
-        { id: 'ai_future', label: 'AI & Future', icon: Sparkles },
-        { id: 'frontend', label: 'Frontend', icon: Layout },
+        { id: 'all', name: 'Elite Stack', icon: Command, color: 'var(--primary)' },
+        { id: 'languages', name: 'Languages', icon: Code2, color: 'var(--primary)' },
+        { id: 'frameworks', name: 'Frameworks', icon: Layout, color: 'var(--secondary)' },
+        { id: 'databases', name: 'Databases', icon: Database, color: 'var(--primary)' },
+        { id: 'tools', name: 'Tools', icon: Terminal, color: 'var(--secondary)' },
+        { id: 'ai', name: 'AI', icon: Sparkles, color: 'var(--primary)' }
     ];
 
+    const allSkills = useMemo(() => {
+        const flat = [];
+        Object.entries(profile.skills).forEach(([category, skills]) => {
+            skills.forEach(skill => flat.push({ name: skill, category }));
+        });
+        return flat;
+    }, []);
+
     const filteredSkills = useMemo(() => {
-        const currentSkills = profile.skills[activeTab];
-        if (!searchQuery) return currentSkills;
-        return currentSkills.filter(skill =>
-            skill.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-    }, [activeTab, searchQuery]);
+        return allSkills.filter(skill => {
+            const matchesSearch = skill.name.toLowerCase().includes(searchQuery.toLowerCase());
+            const matchesCategory = activeCategory === 'all' || skill.category === activeCategory;
+            return matchesSearch && matchesCategory;
+        });
+    }, [searchQuery, activeCategory, allSkills]);
+
+    const getGlowColor = (category) => {
+        const cat = categories.find(c => c.id === category);
+        return cat ? cat.color : 'rgba(0, 229, 255, 0.2)';
+    };
 
     return (
-        <section id="skills" className="py-32 relative bg-surface overflow-hidden">
+        <section id="skills" className="py-24 relative bg-background overflow-hidden">
+            {/* Ambient Background Elements */}
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] pointer-events-none" />
+
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-7xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="mb-16 text-center"
-                    >
-                        <h2 className="text-6xl md:text-8xl font-display font-black text-white tracking-tighter mb-4">
-                            EXPERTISE<span className="text-primary italic">.</span>
-                        </h2>
-                        <p className="text-textSoft text-lg font-light tracking-widest uppercase mb-12">Technical Arsenal & Tooling</p>
+                    {/* Elite Header section */}
+                    <div className="flex flex-col items-center text-center mb-16">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1 }}
+                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 mb-6"
+                        >
+                            <Sparkles size={12} className="text-primary animate-pulse" />
+                            <span className="text-[9px] font-mono font-bold text-white/40 uppercase tracking-[0.3em]">Mastered Technologies</span>
+                        </motion.div>
 
-                        {/* Search Bar */}
-                        <div className="relative max-w-2xl mx-auto mb-16 group">
-                            <div className="absolute inset-0 bg-primary/30 blur-3xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700 rounded-full" />
-                            <div className="relative glass-card-premium rounded-full flex items-center px-8 py-5 border-white/10 group-focus-within:border-primary/50 transition-all duration-500 shadow-xl group-focus-within:shadow-primary/20">
-                                <Search className="text-textSoft group-focus-within:text-primary transition-colors" size={24} />
-                                <input
-                                    type="text"
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    placeholder="Search skills, tools, technologies..."
-                                    className="w-full bg-transparent border-none outline-none px-6 text-white placeholder-white/20 font-display font-bold text-xl"
-                                />
-                                {searchQuery && (
-                                    <button
-                                        onClick={() => setSearchQuery('')}
-                                        className="text-textSoft hover:text-white transition-colors"
-                                    >
-                                        Clear
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                    </motion.div>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="text-4xl md:text-6xl font-display font-black text-white tracking-tighter mb-6 uppercase italic leading-tight"
+                        >
+                            My Tech <span className="text-gradient-neon">Stack</span><span className="text-primary">.</span>
+                        </motion.h2>
 
-                    {/* Category Tabs */}
-                    <div className="flex flex-wrap justify-center gap-4 mb-20">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat.id}
-                                onClick={() => {
-                                    setActiveTab(cat.id);
-                                    setSearchQuery(''); // Reset search on tab change for better UX
-                                }}
-                                className={`px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${activeTab === cat.id ? 'bg-white text-black shadow-2xl scale-110' : 'glass-main text-textSoft hover:text-white hover:bg-white/5'}`}
-                            >
-                                <span className="flex items-center gap-2">
-                                    <cat.icon size={14} />
-                                    {cat.label}
-                                </span>
-                            </button>
-                        ))}
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            className="text-base md:text-lg text-textSoft font-light max-w-xl leading-relaxed"
+                        >
+                            The tools and technologies I use to <span className="text-white italic">build software</span> every day.
+                        </motion.p>
                     </div>
 
-                    {/* Skills Grid */}
-                    <div className="min-h-[400px]">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={`${activeTab}-${searchQuery}`}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"
-                            >
-                                {filteredSkills.length > 0 ? (
-                                    filteredSkills.map((skill, index) => (
-                                        <motion.div
-                                            key={`${activeTab}-${skill}`}
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ delay: index * 0.03 }}
-                                            className="group"
-                                        >
-                                            <div className="glass-card-premium aspect-square rounded-[2rem] flex flex-col items-center justify-center p-6 text-center border border-white/5 group-hover:border-primary/40 transition-all duration-500">
-                                                <div className="mb-4 text-white group-hover:text-primary transition-colors group-hover:scale-110 duration-500">
-                                                    <CustomIcon name={skill} size={40} />
-                                                </div>
-                                                <span className="text-[10px] font-black text-white/50 group-hover:text-white uppercase tracking-widest transition-colors">
-                                                    {skill}
-                                                </span>
-                                            </div>
-                                        </motion.div>
-                                    ))
-                                ) : (
-                                    <div className="col-span-full py-20 text-center">
-                                        <p className="text-textSoft font-display text-2xl font-bold uppercase tracking-widest opacity-50">No matches found for "{searchQuery}"</p>
+                    {/* Integrated Search & Filter Hub */}
+                    <div className="flex flex-col items-center gap-8 mb-16 max-w-5xl mx-auto">
+                        {/* Row 1: Search Bar */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="relative w-full max-w-xl group"
+                        >
+                            <input
+                                type="text"
+                                placeholder="Search skills..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full bg-white/[0.03] border border-white/10 rounded-full py-4 pl-8 pr-14 text-sm text-white placeholder-white/20 outline-none focus:border-primary/30 focus:bg-white/[0.05] transition-all shadow-xl"
+                            />
+                            <Search className="absolute right-6 top-1/2 -translate-y-1/2 text-white/20 group-focus-within:text-primary transition-colors" size={20} />
+                        </motion.div>
+
+                        {/* Row 2: Categories */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="w-full flex justify-center"
+                        >
+                            <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-4 md:pb-0 px-4 scroll-smooth max-w-full">
+                                {categories.map(cat => (
+                                    <button
+                                        key={cat.id}
+                                        onClick={() => setActiveCategory(cat.id)}
+                                        className={`px-8 py-3 rounded-full text-xs font-bold transition-all duration-500 relative group min-w-max ${activeCategory === cat.id
+                                            ? 'text-black'
+                                            : 'text-white/40 hover:text-white border border-white/5'
+                                            }`}
+                                    >
+                                        {activeCategory === cat.id && (
+                                            <motion.div
+                                                layoutId="activeCategoryPillStacked"
+                                                className="absolute inset-0 bg-primary shadow-[0_0_20px_rgba(0,229,255,0.3)] rounded-full"
+                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                            />
+                                        )}
+                                        <div className="relative z-10 flex items-center gap-2">
+                                            <cat.icon size={14} className={activeCategory === cat.id ? 'text-black' : 'group-hover:text-primary transition-colors'} />
+                                            <span>{cat.name}</span>
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Elite Skill Grid */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                        <AnimatePresence mode="popLayout">
+                            {filteredSkills.map((skill, index) => (
+                                <motion.div
+                                    layout
+                                    key={skill.name}
+                                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                                    transition={{ duration: 0.4, delay: index * 0.01, ease: [0.23, 1, 0.32, 1] }}
+                                    className="group relative"
+                                >
+                                    <div className="absolute inset-0 bg-white/[0.01] rounded-xl border border-white/5 group-hover:border-primary/20 transition-all duration-500" />
+
+                                    <div className="relative p-3 flex flex-col items-center justify-between h-[110px] text-center">
+                                        <div className="flex-1 flex items-center justify-center mb-3">
+                                            <CustomIcon
+                                                name={skill.name}
+                                                size={40}
+                                                glow={getGlowColor(skill.category)}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <h3 className="text-[11px] font-mono font-black text-white tracking-[0.15em] uppercase mb-1.5 group-hover:text-primary transition-colors">
+                                                {skill.name}
+                                            </h3>
+                                            <div className="overflow-hidden h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto transition-all duration-500" />
+                                            <p className="mt-1.5 text-[7px] font-mono font-bold text-white/20 uppercase tracking-[0.4em]">
+                                                {skill.category}
+                                            </p>
+                                        </div>
                                     </div>
-                                )}
-                            </motion.div>
+
+                                    {/* Hover interaction glow */}
+                                    <div
+                                        className="absolute inset-0 opacity-0 group-hover:opacity-5 blur-2xl transition-opacity duration-500 rounded-full"
+                                        style={{ backgroundColor: getGlowColor(skill.category) }}
+                                    />
+                                </motion.div>
+                            ))}
                         </AnimatePresence>
                     </div>
 
-                    {/* Marquee effect for all skills at bottom */}
-                    <div className="mt-32 relative py-10 overflow-hidden opacity-10">
-                        <div className="flex whitespace-nowrap animate-shimmer">
-                            {[...profile.skills.backend, ...profile.skills.ai_future, ...profile.skills.auth_tools, ...profile.skills.frontend].map((s, i) => (
-                                <span key={i} className="text-6xl md:text-9xl font-display font-black text-white mx-12 tracking-tighter uppercase italic">{s}</span>
-                            ))}
-                        </div>
-                    </div>
                 </div>
             </div>
-
-            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
         </section>
     );
 };

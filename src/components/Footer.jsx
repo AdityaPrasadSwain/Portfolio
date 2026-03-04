@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUpCircle } from 'lucide-react';
+import { Terminal, Globe, Cpu, ArrowUp, Heart } from 'lucide-react';
 import profile from '../data/profile';
 
 const Footer = () => {
@@ -9,64 +9,67 @@ const Footer = () => {
     };
 
     return (
-        <footer className="py-20 bg-background relative overflow-hidden border-t border-white/5">
+        <footer className="py-20 relative bg-background overflow-hidden border-t border-white/5">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-20">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            className="text-center md:text-left"
-                        >
-                            <h2 className="text-4xl font-display font-black text-white tracking-tighter mb-4 uppercase">
-                                Aditya<span className="text-primary italic">.</span>
-                            </h2>
-                            <p className="text-textSoft font-light tracking-widest uppercase text-xs">Architecting Digital Futures</p>
-                        </motion.div>
-
-                        <div className="flex gap-8">
-                            {[
-                                { icon: Github, href: profile.socials.github },
-                                { icon: Linkedin, href: profile.socials.linkedin },
-                                { icon: Mail, href: `mailto:${profile.email}` }
-                            ].map((social, i) => (
-                                <motion.a
-                                    key={i}
-                                    href={social.href}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    whileHover={{ y: -5, scale: 1.1 }}
-                                    className="w-12 h-12 rounded-xl glass-main flex items-center justify-center text-textSoft hover:text-white transition-all border border-white/5 hover:border-primary/30"
-                                >
-                                    <social.icon size={20} />
-                                </motion.a>
-                            ))}
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-20">
+                        <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+                            <motion.div
+                                whileHover={{ scale: 1.05 }}
+                                className="w-16 h-16 rounded-[1.5rem] bg-primary flex items-center justify-center text-black font-black font-display mb-8 shadow-neon-lime cursor-none"
+                            >
+                                {profile.initials[0]}
+                            </motion.div>
+                            <h3 className="text-3xl font-display font-black text-white italic uppercase tracking-tighter mb-4">
+                                Adtiya<br /><span className="text-primary">Prasad Swain</span>
+                            </h3>
+                            <div className="flex items-center gap-3 text-[10px] font-mono font-bold text-white/40 uppercase tracking-[0.4em]">
+                                <Globe size={14} className="text-secondary" /> Junior Developer
+                            </div>
                         </div>
 
-                        <button
-                            onClick={scrollToTop}
-                            className="group flex items-center gap-3 px-8 py-4 glass-card-premium rounded-full border border-white/5 text-textSoft hover:text-white transition-all"
-                        >
-                            <span className="text-xs font-bold uppercase tracking-widest">Ascend</span>
-                            <ArrowUpCircle size={20} className="group-hover:-translate-y-1 transition-transform text-primary" />
-                        </button>
+                        <div className="flex flex-col items-center lg:items-end gap-10">
+                            <div className="flex gap-8">
+                                {Object.entries(profile.socials).map(([platform, link]) => (
+                                    <a
+                                        key={platform}
+                                        href={link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-white/40 hover:text-primary transition-all relative group"
+                                    >
+                                        {platform}
+                                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-500" />
+                                    </a>
+                                ))}
+                            </div>
+
+                            <motion.button
+                                onClick={scrollToTop}
+                                whileHover={{ y: -5 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="h-16 w-16 glass-main rounded-2xl flex items-center justify-center text-white/40 border border-white/5 hover:border-primary/20 hover:text-primary transition-all"
+                            >
+                                <ArrowUp size={24} />
+                            </motion.button>
+                        </div>
                     </div>
 
-                    <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/5 gap-6">
-                        <p className="text-[10px] font-bold text-textSoft uppercase tracking-[0.5em]">
-                            © {new Date().getFullYear()} ADITYA PRASAD SWAIN. ALL RIGHTS RESERVED.
-                        </p>
-                        <div className="flex gap-8">
-                            <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em]">VERSION 2.0.0</span>
-                            <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em]">CINEMATIC.ETH</span>
+                    <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-white/5 gap-8">
+                        <div className="flex items-center gap-3 text-[9px] font-mono font-bold text-white/10 uppercase tracking-[0.4em]">
+                            <Terminal size={12} /> System Status: <span className="text-primary animate-pulse italic">Operational</span>
                         </div>
+
+                        <p className="text-[9px] font-mono font-bold text-white/20 uppercase tracking-[0.3em] flex items-center gap-2">
+                            Built with <Cpu size={12} className="text-secondary" /> & <Heart size={12} className="text-primary fill-primary" /> in Odisha
+                        </p>
+
+                        <p className="text-[9px] font-mono font-bold text-white/10 uppercase tracking-[0.2em]">
+                            &copy; 2024 Antigravity Protocol. All Rights Reserved.
+                        </p>
                     </div>
                 </div>
             </div>
-
-            {/* Background Texture */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('/noise.png')] opacity-[0.03] pointer-events-none" />
         </footer>
     );
 };

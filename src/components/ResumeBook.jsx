@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import { Briefcase, GraduationCap, Code, User, Star } from 'lucide-react';
-import { profile } from '../data/profile';
+import profile from '../data/profile';
 
 const Page = forwardRef((props, ref) => {
     return (
@@ -158,7 +158,7 @@ const ResumeBook = () => {
                                     {project.description}
                                 </p>
                                 <div className="flex flex-wrap gap-1">
-                                    {project.tech.slice(0, 3).map(t => (
+                                    {project.tech?.slice(0, 3).map(t => (
                                         <span key={t} className="px-1.5 py-0.5 bg-black/10 text-[9px] text-textMain rounded">
                                             {t}
                                         </span>

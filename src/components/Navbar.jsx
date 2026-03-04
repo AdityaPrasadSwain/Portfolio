@@ -1,108 +1,126 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
-import { profile } from '../data/profile'
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Terminal, Cpu, Globe, ArrowRight } from 'lucide-react';
+import profile from '../data/profile';
 
-export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false)
-    const [scrolled, setScrolled] = useState(false)
+const Navbar = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20)
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const navLinks = [
-        { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Projects', href: '#projects' },
+        { name: 'Identity', href: '#about' },
+        { name: 'Arsenal', href: '#skills' },
         { name: 'Education', href: '#education' },
-        { name: 'Skills', href: '#skills' },
-    ]
+        { name: 'Works', href: '#projects' },
+        { name: 'Contact', href: '#contact' }
+    ];
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 px-6' : 'py-8 px-8'
+            className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ${isScrolled ? 'py-4' : 'py-10'
                 }`}
         >
-            <div
-                className={`mx-auto max-w-7xl transition-all duration-700 ease-in-out ${scrolled
-                    ? 'glass-nav rounded-[2.5rem] py-3 px-8 max-w-4xl shadow-[0_20px_50px_rgba(0,0,0,0.3)]'
-                    : 'bg-transparent py-0 px-0'
-                    }`}
-            >
-                <div className="flex items-center justify-between">
+            <div className="container mx-auto px-6">
+                <div className={`relative flex items-center justify-between transition-all duration-700 ${isScrolled ? 'px-8 py-3 glass-main rounded-full border border-white/5 shadow-2xl max-w-5xl mx-auto' : 'max-w-7xl mx-auto'
+                    }`}>
                     {/* Logo */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="text-2xl font-display font-extrabold text-white tracking-tighter"
+                    <motion.a
+                        href="#home"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="flex items-center gap-3 group"
                     >
-                        {profile.name.split(' ')[0]}<span className="text-primary">.</span>
-                    </motion.div>
+                        <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-black font-black font-display group-hover:scale-110 transition-transform shadow-neon-lime">
+                            {profile.initials[0]}
+                        </div>
+                        <span className="text-sm font-mono font-bold tracking-[0.2em] text-white uppercase hidden sm:block">
+                            Junior <span className="text-primary group-hover:text-white transition-colors duration-500">Developer</span>
+                        </span>
+                    </motion.a>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center gap-10">
-                        {['About', 'Projects', 'Education', 'Skills', 'Contact'].map((item) => (
-                            <a
-                                key={item}
-                                href={`#${item.toLowerCase()}`}
-                                className="text-sm font-bold text-textSoft hover:text-white transition-all duration-300 uppercase tracking-widest relative group"
+                    <div className="hidden lg:flex items-center gap-12">
+                        {navLinks.map((link, i) => (
+                            <motion.a
+                                key={link.name}
+                                href={link.href}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-white/40 hover:text-primary transition-all relative group"
                             >
-                                {item}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-500 group-hover:w-full shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
-                            </a>
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-500" />
+                            </motion.a>
                         ))}
-                        <a
-                            href="#contact"
-                            className="ml-4 px-8 py-3 bg-primary text-background rounded-full font-bold text-sm uppercase tracking-widest hover:shadow-[0_0_25px_rgba(56,189,248,0.4)] hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
-                        >
-                            Hire Me
-                        </a>
                     </div>
 
-                    {/* Mobile Toggle */}
-                    <button
-                        className="md:hidden p-2 text-white hover:text-primary transition-colors"
-                        onClick={() => setIsOpen(!isOpen)}
-                    >
-                        {isOpen ? <X size={28} /> : <Menu size={28} />}
-                    </button>
+                    {/* Action Button */}
+                    <div className="flex items-center gap-5">
+                        <motion.a
+                            href="#contact"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="hidden md:flex items-center gap-2 h-10 px-6 glass-main rounded-xl border border-white/5 text-[10px] font-mono font-bold uppercase tracking-widest text-primary hover:bg-primary/10 hover:border-primary/20 transition-all"
+                        >
+                            Orchestrate <Terminal size={12} />
+                        </motion.a>
+
+                        {/* Mobile Menu Toggle */}
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="lg:hidden w-10 h-10 flex items-center justify-center text-white"
+                        >
+                            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
-                {isOpen && (
+                {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 10, scale: 1 }}
-                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                        className="md:hidden fixed top-20 left-6 right-6 glass-card rounded-[2rem] p-8 overflow-hidden z-40 border border-white/20 shadow-2xl"
+                        initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+                        animate={{ opacity: 1, backdropFilter: 'blur(40px)' }}
+                        exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+                        className="fixed inset-0 bg-background/80 lg:hidden flex flex-col items-center justify-center z-[200]"
                     >
-                        <div className="flex flex-col gap-6">
-                            {['About', 'Projects', 'Education', 'Skills', 'Contact'].map((item) => (
-                                <a
-                                    key={item}
-                                    href={`#${item.toLowerCase()}`}
-                                    className="text-xl font-bold text-textMain hover:text-primary transition-colors uppercase tracking-widest"
-                                    onClick={() => setIsOpen(false)}
+                        <button
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="absolute top-10 right-10 w-12 h-12 glass-main rounded-2xl flex items-center justify-center text-white"
+                        >
+                            <X size={24} />
+                        </button>
+
+                        <div className="flex flex-col items-center gap-10">
+                            {navLinks.map((link, i) => (
+                                <motion.a
+                                    key={link.name}
+                                    href={link.href}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="text-4xl font-display font-black text-white hover:text-primary uppercase italic tracking-tighter"
                                 >
-                                    {item}
-                                </a>
+                                    {link.name}
+                                </motion.a>
                             ))}
-                            <a
-                                href="#contact"
-                                className="w-full py-4 bg-primary text-background rounded-2xl font-bold text-center uppercase tracking-widest shadow-lg"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Hire Me
-                            </a>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
         </nav>
-    )
-}
+    );
+};
+
+export default Navbar;

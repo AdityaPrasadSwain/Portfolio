@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { Mail, Github, Linkedin, ArrowUpRight, Send, Globe, Terminal, Layers, Activity } from 'lucide-react';
 import profile from '../data/profile';
 
 const Contact = () => {
@@ -8,88 +8,111 @@ const Contact = () => {
         <section id="contact" className="py-32 relative bg-background overflow-hidden border-t border-white/5">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-32 items-center">
                         <div>
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, x: -30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="mb-12"
+                                className="mb-16"
                             >
-                                <h2 className="text-7xl md:text-9xl font-display font-black text-white tracking-tighter leading-none mb-8">
-                                    CONNECT<span className="text-primary">.</span>
+                                <h2 className="text-6xl md:text-8xl font-display font-black text-white tracking-tighter mb-8 uppercase italic leading-none">
+                                    Contact<br /><span className="text-gradient-neon text-glow-lime">Me</span><span className="text-primary">.</span>
                                 </h2>
-                                <p className="text-xl md:text-2xl text-textSoft font-light max-w-lg leading-relaxed mb-12">
-                                    Exploring new architectural challenges or just want to talk about high-performance systems?
+                                <p className="text-xl text-textSoft font-light max-w-xl leading-relaxed">
+                                    I am available for new projects and roles. Let's build something <span className="text-white italic">great together</span>.
                                 </p>
                             </motion.div>
 
-                            <div className="space-y-6">
-                                <a href={`mailto:${profile.email}`} className="group flex items-center gap-6 p-8 glass-card-premium rounded-[2.5rem] border border-white/5 hover:border-primary/30 transition-all">
-                                    <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                                        <Mail size={32} />
-                                    </div>
-                                    <div>
-                                        <p className="text-textSoft text-xs font-bold uppercase tracking-widest mb-1">Direct Email</p>
-                                        <p className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-primary transition-colors">{profile.email}</p>
-                                    </div>
-                                </a>
-
-                                <div className="flex gap-6">
-                                    <a href={profile.socials.github} target="_blank" rel="noreferrer" className="flex-1 flex items-center gap-4 p-6 glass-main rounded-[2rem] text-textSoft hover:text-white hover:bg-white/5 transition-all">
-                                        <Github size={24} /> <span className="font-bold text-xs uppercase tracking-widest">GitHub</span>
-                                    </a>
-                                    <a href={profile.socials.linkedin} target="_blank" rel="noreferrer" className="flex-1 flex items-center gap-4 p-6 glass-main rounded-[2rem] text-textSoft hover:text-white hover:bg-white/5 transition-all">
-                                        <Linkedin size={24} /> <span className="font-bold text-xs uppercase tracking-widest">LinkedIn</span>
-                                    </a>
-                                </div>
+                            <div className="space-y-8 mb-16">
+                                {Object.entries(profile.socials).map(([platform, link], i) => (
+                                    <motion.a
+                                        key={platform}
+                                        href={link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className="flex items-center justify-between p-6 glass-card-premium border border-white/5 rounded-[2rem] group hover:border-primary/20 transition-all hover:shadow-magnetic"
+                                    >
+                                        <div className="flex items-center gap-5">
+                                            <div className="w-12 h-12 rounded-xl bg-white/[0.02] flex items-center justify-center text-white/40 group-hover:text-primary transition-colors">
+                                                {platform === 'email' && <Mail size={20} />}
+                                                {platform === 'github' && <Github size={20} />}
+                                                {platform === 'linkedin' && <Linkedin size={20} />}
+                                                {platform === 'instagram' && <Layers size={20} />}
+                                            </div>
+                                            <div>
+                                                <p className="text-[10px] font-mono font-bold text-white/20 uppercase tracking-[0.4em] mb-1">{platform}</p>
+                                                <p className="text-lg font-display font-bold text-white uppercase italic tracking-tighter">
+                                                    {platform === 'email' ? 'swainaditya921@gmail.com' : `@adityaswain`}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <ArrowUpRight className="text-white/10 group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" size={24} />
+                                    </motion.a>
+                                ))}
                             </div>
                         </div>
 
                         <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="glass-card-premium rounded-[3.5rem] p-12 md:p-16 border border-white/10 shadow-3xl"
+                            className="relative"
                         >
-                            <div className="flex items-center gap-3 mb-10">
-                                <MessageSquare className="text-primary" size={24} />
-                                <span className="text-xs font-bold text-white/50 uppercase tracking-[0.4em]">Send a message</span>
+                            <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full scale-125 pointer-events-none" />
+                            <div className="bento-card bg-surfaceLight/30 border border-white/10 p-12 md:p-16 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2" />
+
+                                <div className="relative z-10">
+                                    <div className="flex items-center gap-3 mb-12">
+                                        <Terminal size={18} className="text-primary" />
+                                        <span className="text-[10px] font-mono font-black text-primary uppercase tracking-[0.5em]">Encrypted Channel</span>
+                                    </div>
+
+                                    <form className="space-y-8">
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-mono font-bold text-white/20 uppercase tracking-widest ml-4">Full Identity</label>
+                                            <input type="text" placeholder="John Doe" className="input-cinematic shadow-none focus:shadow-neon-lime/10" />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-mono font-bold text-white/20 uppercase tracking-widest ml-4">Signal Source</label>
+                                            <input type="email" placeholder="john@company.com" className="input-cinematic shadow-none focus:shadow-neon-lime/10" />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-mono font-bold text-white/20 uppercase tracking-widest ml-4">The Payload</label>
+                                            <textarea rows="4" placeholder="Brief project overview or inquiry details..." className="input-cinematic shadow-none focus:shadow-neon-lime/10 resize-none pt-6"></textarea>
+                                        </div>
+
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            className="w-full h-16 bg-primary text-black font-black uppercase tracking-[0.2em] rounded-xl flex items-center justify-center gap-4 group/btn shadow-neon-lime hover:shadow-primary/40 transition-all text-[10px]"
+                                        >
+                                            Send Message <Send size={16} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                                        </motion.button>
+                                    </form>
+                                </div>
+
+                                <div className="mt-16 pt-10 border-t border-white/5 flex items-center gap-6 opacity-30 group-hover:opacity-100 transition-opacity">
+                                    <div className="w-20 h-20 rounded-2xl glass-card-premium border border-white/10 flex items-center justify-center text-primary/40 group-hover:text-primary transition-colors duration-500">
+                                        <Activity size={32} />
+                                    </div>
+                                    <div className="flex-1">
+                                        <div className="h-1 w-full bg-white/[0.05] rounded-full overflow-hidden">
+                                            <motion.div
+                                                animate={{ x: ["-100%", "100%"] }}
+                                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                                className="h-full w-1/3 bg-primary/40"
+                                            />
+                                        </div>
+                                        <p className="text-[9px] font-mono font-bold mt-3 uppercase tracking-widest text-white/60">System Ready for Transmission</p>
+                                    </div>
+                                </div>
                             </div>
-
-                            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                    <div className="space-y-2">
-                                        <label className="text-[10px] font-black text-textSoft uppercase tracking-widest px-4">Full Name</label>
-                                        <input
-                                            type="text"
-                                            placeholder="Your Name"
-                                            className="input-cinematic"
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label className="text-[10px] font-black text-textSoft uppercase tracking-widest px-4">Email Address</label>
-                                        <input
-                                            type="email"
-                                            placeholder="Your Email"
-                                            className="input-cinematic"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black text-textSoft uppercase tracking-widest px-4">Your Message</label>
-                                    <textarea
-                                        rows="6"
-                                        placeholder="Your Message..."
-                                        className="input-cinematic resize-none"
-                                    />
-                                </div>
-
-                                <button className="group w-full h-20 bg-primary text-black font-black rounded-3xl flex items-center justify-center gap-3 text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_0_30px_rgba(56,189,248,0.3)] hover:shadow-primary/50">
-                                    Ignite Conversation
-                                    <ArrowUpRight size={24} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                </button>
-                            </form>
                         </motion.div>
                     </div>
                 </div>

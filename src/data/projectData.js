@@ -17,9 +17,9 @@ export const projectData = {
             { title: "Automated Payouts", desc: "Financial module for admin to calculate and process seller earnings and delivery agent fees." }
         ],
         images: [
-            "/src/assets/images/udrakala-homepage.png",
-            "/src/assets/images/udrakala-dashboard.png",
-            "/src/assets/images/udrakala-mobile.png"
+            "/images/ecommerce_mockup.png",
+            "/images/system_architect_visual.png",
+            "/images/performance_metrics_visual.png"
         ],
         techStack: {
             Frontend: ["React.js", "Vite", "Tailwind CSS (Glassmorphism UI)", "Framer Motion (Animations)"],
