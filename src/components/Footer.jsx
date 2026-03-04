@@ -16,12 +16,12 @@ const Footer = () => {
                         <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
                             <motion.div
                                 whileHover={{ scale: 1.05 }}
-                                className="w-16 h-16 rounded-[1.5rem] bg-primary flex items-center justify-center text-black font-black font-display mb-8 shadow-neon-lime cursor-none"
+                                className="w-16 h-16 rounded-[1.5rem] bg-primary flex items-center justify-center text-black font-black font-display mb-8 shadow-neon-cobalt cursor-none"
                             >
                                 {profile.initials[0]}
                             </motion.div>
                             <h3 className="text-3xl font-display font-black text-white italic uppercase tracking-tighter mb-4">
-                                Adtiya<br /><span className="text-primary">Prasad Swain</span>
+                                Aditya<br /><span className="text-primary">Prasad Swain</span>
                             </h3>
                             <div className="flex items-center gap-3 text-[10px] font-mono font-bold text-white/40 uppercase tracking-[0.4em]">
                                 <Globe size={14} className="text-secondary" /> Junior Developer

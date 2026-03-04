@@ -36,8 +36,9 @@ const Hero = () => {
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background py-20">
             {/* Premium Background Elements */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-[0.2] mask-radial" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-hero-gradient opacity-40 z-0" />
+                <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-[0.1] mask-radial" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-hero-gradient opacity-30 z-0" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-secondary shadow-neon-teal animate-pulse" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
@@ -66,7 +67,7 @@ const Hero = () => {
                         className="mb-6"
                     >
                         <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-black leading-tight tracking-tighter text-white uppercase italic">
-                            HI, I AM <span className="text-gradient-neon text-glow-cyan">ADITYA</span><span className="text-primary">.</span>
+                            HI, I AM <span className="text-gradient-neon text-glow-cobalt">ADITYA</span><span className="text-primary">.</span>
                         </h1>
                     </motion.div>
 
@@ -117,7 +118,7 @@ const Hero = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.98 }}
-                                className="h-12 px-8 bg-primary text-black font-black uppercase tracking-widest rounded-xl shadow-neon-cyan hover:shadow-primary/40 transition-all flex items-center gap-3 group text-xs"
+                                className="h-12 px-8 bg-primary text-black font-black uppercase tracking-widest rounded-xl shadow-neon-cobalt hover:shadow-primary/40 transition-all flex items-center gap-3 group text-xs"
                             >
                                 See My Work
                                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -131,7 +132,7 @@ const Hero = () => {
                                             href={link}
                                             target="_blank"
                                             rel="noreferrer"
-                                            whileHover={{ y: -5, color: '#00E5FF' }}
+                                            whileHover={{ y: -5, color: '#38BDF8' }}
                                             className="w-10 h-10 glass-main rounded-xl flex items-center justify-center text-white/40 border border-white/5 hover:border-primary/20 transition-all"
                                         >
                                             {platform === 'instagram' && <Instagram size={18} />}
@@ -154,7 +155,7 @@ const Hero = () => {
                         <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full scale-75 group-hover:scale-100 transition-transform duration-1000" />
                         <div className="relative aspect-[21/9] rounded-[3rem] overflow-hidden glass-card-premium border border-white/10 p-2 bg-mesh-premium">
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-50" />
-                            <img src="/images/hero.png" alt="Hero Visualization" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+                            <img src="/images/hero_3d_connectivity_flow_1772489081311.png" alt="Hero Visualization" className="absolute inset-0 w-full h-full object-cover opacity-30" />
                             <div className="w-full h-full flex items-center justify-center relative z-10">
                                 <span className="text-white/10 font-display font-black text-6xl md:text-9xl uppercase italic tracking-tighter select-none">SYSTEMS READY</span>
                             </div>
@@ -163,17 +164,17 @@ const Hero = () => {
                         {/* Interactive Floating Tags */}
                         <div className="absolute -top-10 -left-10 hidden lg:block">
                             <motion.div animate={{ y: [0, -20, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="px-6 py-4 glass-card-premium rounded-3xl border border-white/10 flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary"><Layers size={20} /></div>
+                                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary shadow-neon-cobalt"><Layers size={20} /></div>
                                 <div>
                                     <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-0.5">Throughput</p>
-                                    <p className="text-xl font-display font-black text-white leading-none">1.2M <span className="text-xs text-primary">req/s</span></p>
+                                    <p className="text-xl font-display font-black text-white leading-none">1.2M <span className="text-xs text-secondary">req/s</span></p>
                                 </div>
                             </motion.div>
                         </div>
 
                         <div className="absolute -bottom-10 -right-10 hidden lg:block">
                             <motion.div animate={{ y: [0, 20, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="px-6 py-4 glass-card-premium rounded-3xl border border-white/10 flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center text-secondary"><Sparkles size={20} /></div>
+                                <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center text-secondary shadow-neon-teal"><Sparkles size={20} /></div>
                                 <div>
                                     <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-0.5">Latency</p>
                                     <p className="text-xl font-display font-black text-white leading-none">4ms <span className="text-xs text-secondary">p99</span></p>

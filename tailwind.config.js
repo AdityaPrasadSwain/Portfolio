@@ -7,19 +7,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#050505", // Deeper black
-        surface: "#0A0A0B",    // Rich Charcoal
-        surfaceLight: "#121214",
-        primary: "#00E5FF",    // Electric Cyan
-        secondary: "#7000FF",  // Deep Violet
-        accent: "#FFFFFF",     // Pure White
-        textMain: "#FFFFFF",
-        textSoft: "#86868B",   // Apple-style gray
-        border: "rgba(255, 255, 255, 0.04)",
+        background: "#020617", // Midnight Slate
+        surface: "#0F172A",    // Rich Navy
+        surfaceLight: "#1E293B",
+        primary: "#38BDF8",    // Sky Cobalt
+        secondary: "#2DD4BF",  // Emerald Teal
+        accent: "#F8FAFC",     // Ghost White
+        textMain: "#F8FAFC",
+        textSoft: "#94A3B8",   // Slate Gray
+        border: "rgba(255, 255, 255, 0.05)",
       },
       fontFamily: {
-        display: ["Open Sans", "sans-serif"],
-        body: ["Open Sans", "sans-serif"],
+        display: ["Montserrat", "sans-serif"],
+        body: ["Inter", "sans-serif"],
         mono: ["Roboto Mono", "monospace"],
       },
       animation: {
@@ -45,14 +45,14 @@ export default {
         }
       },
       backgroundImage: {
-        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)',
-        'hero-gradient': 'radial-gradient(circle at top, rgba(0, 229, 255, 0.05), transparent 70%)',
-        'mesh-premium': 'radial-gradient(at 0% 0%, rgba(0, 229, 255, 0.08) 0, transparent 40%), radial-gradient(at 100% 100%, rgba(112, 0, 255, 0.08) 0, transparent 40%)',
+        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.01) 1px, transparent 1px)',
+        'hero-gradient': 'radial-gradient(circle at top, rgba(56, 189, 248, 0.07), transparent 70%)',
+        'mesh-premium': 'radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0, transparent 40%), radial-gradient(at 100% 100%, rgba(45, 212, 191, 0.08) 0, transparent 40%)',
       },
       boxShadow: {
         'glass-premium': '0 24px 80px rgba(0, 0, 0, 0.6)',
-        'neon-cyan': '0 0 30px rgba(0, 229, 255, 0.15)',
-        'neon-violet': '0 0 30px rgba(112, 0, 255, 0.15)',
+        'neon-cobalt': '0 0 30px rgba(56, 189, 248, 0.2)',
+        'neon-teal': '0 0 30px rgba(45, 212, 191, 0.2)',
         'magnetic': '0 20px 40px rgba(0, 0, 0, 0.4)',
       },
       transitionTimingFunction: {

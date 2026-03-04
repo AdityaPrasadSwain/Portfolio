@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Terminal, Cpu, Globe, ArrowRight } from 'lucide-react';
+import { Menu, X, Cpu, Globe, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import profile from '../data/profile';
 
 const Navbar = () => {
@@ -16,12 +17,45 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Identity', href: '#about' },
-        { name: 'Arsenal', href: '#skills' },
-        { name: 'Education', href: '#education' },
-        { name: 'Works', href: '#projects' },
-        { name: 'Contact', href: '#contact' }
+        { name: 'About', href: '/about' },
+        { name: 'Skills', href: '/skills' },
+        { name: 'Projects', href: '/projects' },
+        { name: 'Education', href: '/education' },
+        { name: 'Contact', href: '/contact' }
     ];
+
+    const handleDownload = async (e) => {
+        e.preventDefault();
+        const resumeUrl = '/resume/ATS_Aditya_Prasad_Swain.pdf';
+        const fileName = 'ATS_Aditya_Prasad_Swain.pdf';
+
+        try {
+            const response = await fetch(resumeUrl);
+            if (!response.ok) throw new Error('Resource not found');
+
+            const blob = await response.blob();
+            // Force correct MIME type for PDF
+            const pdfBlob = new Blob([blob], { type: 'application/pdf' });
+            const url = window.URL.createObjectURL(pdfBlob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', fileName);
+            document.body.appendChild(link);
+            link.click();
+
+            // Cleanup
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error('Download failed:', error);
+            // Fallback for production: standard anchor download
+            const link = document.createElement('a');
+            link.href = resumeUrl;
+            link.download = fileName;
+            link.click();
+        }
+    };
 
     return (
         <nav
@@ -32,47 +66,42 @@ const Navbar = () => {
                 <div className={`relative flex items-center justify-between transition-all duration-700 ${isScrolled ? 'px-8 py-3 glass-main rounded-full border border-white/5 shadow-2xl max-w-5xl mx-auto' : 'max-w-7xl mx-auto'
                     }`}>
                     {/* Logo */}
-                    <motion.a
-                        href="#home"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                    <Link
+                        to="/"
                         className="flex items-center gap-3 group"
                     >
-                        <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-black font-black font-display group-hover:scale-110 transition-transform shadow-neon-lime">
+                        <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-black font-black font-display group-hover:scale-110 transition-transform shadow-neon-cobalt">
                             {profile.initials[0]}
                         </div>
                         <span className="text-sm font-mono font-bold tracking-[0.2em] text-white uppercase hidden sm:block">
                             Junior <span className="text-primary group-hover:text-white transition-colors duration-500">Developer</span>
                         </span>
-                    </motion.a>
+                    </Link>
 
                     {/* Desktop Menu */}
                     <div className="hidden lg:flex items-center gap-12">
                         {navLinks.map((link, i) => (
-                            <motion.a
+                            <Link
                                 key={link.name}
-                                href={link.href}
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
+                                to={link.href}
                                 className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-white/40 hover:text-primary transition-all relative group"
                             >
                                 {link.name}
                                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-500" />
-                            </motion.a>
+                            </Link>
                         ))}
                     </div>
 
                     {/* Action Button */}
                     <div className="flex items-center gap-5">
-                        <motion.a
-                            href="#contact"
+                        <motion.button
+                            onClick={handleDownload}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             className="hidden md:flex items-center gap-2 h-10 px-6 glass-main rounded-xl border border-white/5 text-[10px] font-mono font-bold uppercase tracking-widest text-primary hover:bg-primary/10 hover:border-primary/20 transition-all"
                         >
-                            Orchestrate <Terminal size={12} />
-                        </motion.a>
+                            Resume <ArrowRight size={12} className="rotate-90" />
+                        </motion.button>
 
                         {/* Mobile Menu Toggle */}
                         <button
@@ -103,17 +132,14 @@ const Navbar = () => {
 
                         <div className="flex flex-col items-center gap-10">
                             {navLinks.map((link, i) => (
-                                <motion.a
+                                <Link
                                     key={link.name}
-                                    href={link.href}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
+                                    to={link.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="text-4xl font-display font-black text-white hover:text-primary uppercase italic tracking-tighter"
                                 >
                                     {link.name}
-                                </motion.a>
+                                </Link>
                             ))}
                         </div>
                     </motion.div>

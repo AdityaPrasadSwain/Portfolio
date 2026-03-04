@@ -17,9 +17,9 @@ export const projectData = {
             { title: "Automated Payouts", desc: "Financial module for admin to calculate and process seller earnings and delivery agent fees." }
         ],
         images: [
-            "/images/ecommerce_mockup.png",
-            "/images/system_architect_visual.png",
-            "/images/performance_metrics_visual.png"
+            "/images/ecommerce_mockup_1772640432079.png",
+            "/images/system_architect_visual_1772640355787.png",
+            "/images/performance_metrics_visual_v2_1772640559011.png"
         ],
         techStack: {
             Frontend: ["React.js", "Vite", "Tailwind CSS (Glassmorphism UI)", "Framer Motion (Animations)"],
@@ -29,6 +29,6 @@ export const projectData = {
             Tools: ["Maven", "Git", "Postman"]
         },
         liveUrl: "https://udrakala-demo.example.com",
-        githubUrl: "https://github.com/yourusername/udrakala"
+        githubUrl: "https://github.com/AdityaPrasadSwain/OdishaProduct"
     }
 };

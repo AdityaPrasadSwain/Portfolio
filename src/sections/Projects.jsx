@@ -4,10 +4,10 @@ import { Github, ExternalLink, ArrowRight, X, Layers, Globe, Zap, Shield, Databa
 import profile from '../data/profile';
 
 const projectImages = {
-    "Udrakala Ecommerce": "/images/ecommerce_mockup.png",
-    "AI-Driven Learning Platform": "/images/ai_learning_mockup.png",
-    "Expense Management System": "/images/performance_metrics_visual.png",
-    "Event Management System": "/images/system_architect_visual.png"
+    "Udrakala Ecommerce": "/images/ecommerce_mockup_1772640432079.png",
+    "AI-Driven Learning Platform": "/images/ai_learning_mockup_v2_1772640537360.png",
+    "Expense Management System": "/images/performance_metrics_visual_v2_1772640559011.png",
+    "Event Management System": "/images/system_architect_visual_1772640355787.png"
 };
 
 const Projects = () => {
@@ -25,7 +25,7 @@ const Projects = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <h2 className="text-4xl md:text-6xl font-display font-black text-white tracking-tighter mb-6 uppercase italic">
-                                Featured<br /><span className="text-gradient-neon text-glow-cyan">Portfolio</span><span className="text-primary">.</span>
+                                Featured<br /><span className="text-gradient-neon text-glow-cobalt">Portfolio</span><span className="text-primary">.</span>
                             </h2>
                             <p className="text-lg text-textSoft font-light max-w-xl border-l-2 border-primary/20 pl-8 py-2">
                                 A curated selection of high-performance systems and elite digital solutions.
@@ -40,7 +40,7 @@ const Projects = () => {
                             <div className="flex items-center gap-6">
                                 <div className="h-2 w-48 bg-white/[0.03] rounded-full overflow-hidden border border-white/5 relative">
                                     <motion.div
-                                        className="absolute inset-y-0 left-0 bg-primary shadow-neon-cyan"
+                                        className="absolute inset-y-0 left-0 bg-primary shadow-neon-cobalt"
                                         style={{ width: '30%' }} // This should ideally be dynamic, but for now fixed as a placeholder
                                     />
                                 </div>
@@ -77,7 +77,7 @@ const Projects = () => {
 
                                     {/* Background Image / Pattern */}
                                     <div className="absolute inset-0 opacity-20 group-hover/card:opacity-30 transition-opacity duration-700">
-                                        <img src={projectImages[project.title]} alt="" className="w-full h-full object-cover grayscale" />
+                                        <img src={projectImages[project.title]} alt="" className="w-full h-full object-cover" />
                                     </div>
 
                                     {/* Card Content */}
@@ -107,7 +107,7 @@ const Projects = () => {
 
                                     {/* Hover Cursor Reveal */}
                                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 opacity-0 group-hover/card:opacity-100 transition-all duration-500 scale-50 group-hover/card:scale-100 pointer-events-none">
-                                        <div className="w-24 h-24 rounded-full bg-primary flex items-center justify-center text-black font-black uppercase text-[10px] tracking-widest shadow-neon-cyan rotate-6">
+                                        <div className="w-24 h-24 rounded-full bg-primary flex items-center justify-center text-black font-black uppercase text-[10px] tracking-widest shadow-neon-cobalt rotate-6">
                                             Open<br />Case
                                         </div>
                                     </div>
@@ -158,13 +158,13 @@ const Projects = () => {
                                 <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent z-10" />
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] aspect-square border-2 border-white/5 rounded-full flex items-center justify-center">
                                     <div className="w-[70%] aspect-square border border-white/10 rounded-full flex items-center justify-center animate-spin-slow">
-                                        <div className="w-4 h-4 rounded-full bg-primary shadow-neon-cyan" />
+                                        <div className="w-4 h-4 rounded-full bg-primary shadow-neon-cobalt" />
                                     </div>
                                 </div>
                                 <div className="absolute bottom-16 left-16 right-16 z-20">
                                     <h4 className="text-[10px] font-mono font-black text-primary uppercase tracking-[0.5em] mb-6">System Visualization</h4>
                                     <div className="p-1 glass-card-premium rounded-[2rem] border border-white/10">
-                                        <img src="/system-architecture.png" alt="Architecture" className="w-full rounded-[1.8rem] opacity-80" />
+                                        <img src="/images/system-architecture.png" alt="Architecture" className="w-full rounded-[1.8rem] opacity-80" />
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +214,7 @@ const Projects = () => {
                                     </div>
 
                                     <div className="flex flex-col sm:flex-row gap-4">
-                                        <a href={selectedProject.links.github} target="_blank" rel="noreferrer" className="flex-1 h-14 flex items-center justify-center bg-primary text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.03] active:scale-[0.98] transition-all shadow-neon-cyan">
+                                        <a href={selectedProject.links.github} target="_blank" rel="noreferrer" className="flex-1 h-14 flex items-center justify-center bg-primary text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.03] active:scale-[0.98] transition-all shadow-neon-cobalt">
                                             Architecture <Github className="ml-3" size={16} />
                                         </a>
                                         <a href={selectedProject.links.demo} target="_blank" rel="noreferrer" className="flex-1 h-14 flex items-center justify-center glass-main border border-white/5 text-white font-black uppercase tracking-widest text-[10px] rounded-xl hover:bg-white/[0.03] transition-all">

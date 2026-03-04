@@ -54,7 +54,7 @@ const profile = {
             challenge: "Helping rural artists sell their work worldwide by building a trusted and easy-to-use online platform.",
             links: {
                 demo: "#",
-                github: "#"
+                github: "https://github.com/AdityaPrasadSwain/OdishaProduct"
             }
         },
         {
@@ -66,7 +66,7 @@ const profile = {
             challenge: "Building an AI tutor that creates quizzes from videos in real-time.",
             links: {
                 demo: "#",
-                github: "#"
+                github: "https://github.com/AdityaPrasadSwain/Learning-Platfrom"
             }
         },
         {
@@ -78,7 +78,7 @@ const profile = {
             challenge: "Making the approval process automatic while keeping exact records for safety.",
             links: {
                 demo: "#",
-                github: "#"
+                github: "https://github.com/Pallabis52/Enterprise-Expense-Management-System"
             }
         },
         {
@@ -90,7 +90,7 @@ const profile = {
             challenge: "Preventing double-booking during busy times using the right technology to keep everything consistent.",
             links: {
                 demo: "#",
-                github: "#"
+                github: "https://github.com/AdityaPrasadSwain/Event-Management-System"
             }
         }
     ],

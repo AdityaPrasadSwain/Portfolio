@@ -20,7 +20,7 @@ const About = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <h2 className="text-4xl md:text-6xl font-display font-black text-white tracking-tighter mb-6 uppercase italic">
-                                The Design<br /><span className="text-gradient-neon text-glow-cyan">Identity</span><span className="text-secondary">.</span>
+                                The Design<br /><span className="text-gradient-neon text-glow-cobalt">Identity</span><span className="text-secondary">.</span>
                             </h2>
                             <p className="text-base text-textSoft font-light max-w-xl border-l-2 border-secondary/20 pl-8 py-2">
                                 At the intersection of high-tier engineering and elite UI/UX. I don't just write code; I design scalable digital ecosystems.
@@ -40,7 +40,7 @@ const About = () => {
                             <div className="relative mb-12 w-32 h-32 md:w-48 md:h-48">
                                 <div className="absolute inset-x-0 bottom-0 bg-primary/30 blur-[60px] h-1/2 rounded-full scale-125" />
                                 <img
-                                    src="/images/system_architect_visual.png"
+                                    src="/images/system_architect_visual_1772640355787.png"
                                     alt="Junior Developer"
                                     className="w-full h-full object-cover rounded-[3.5rem] relative z-10 border border-white/10 glass-card-premium group-hover:scale-105 transition-transform duration-1000"
                                 />
@@ -123,7 +123,7 @@ const About = () => {
                                             <div className="w-full h-full bg-white/[0.01] rounded-full border border-white/[0.08]" />
                                         </div>
                                     </motion.div>
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-secondary shadow-neon-cyan animate-pulse" />
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-secondary shadow-neon-teal animate-pulse" />
                                 </div>
                             </div>
                         </motion.div>
