@@ -51,10 +51,10 @@ export default function ProjectDetails({ project, onClose }) {
                             transition={{ delay: 0.2 }}
                             className="relative z-10"
                         >
-                            <span className="px-4 py-2 bg-primary/90 text-white text-xs font-bold uppercase tracking-wider rounded-lg mb-3 inline-block shadow-lg">
+                            <span className="px-4 py-2 bg-primary/90 text-white text-xs font-medium uppercase tracking-wider rounded-lg mb-3 inline-block shadow-lg">
                                 {project.category}
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent mb-2 font-display leading-tight">{project.title}</h2>
+                            <h2 className="text-4xl md:text-5xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent mb-2 font-display leading-tight">{project.title}</h2>
                             <p className="text-xl text-textMain font-medium">{project.role}</p>
                         </motion.div>
                     </div>
@@ -71,7 +71,7 @@ export default function ProjectDetails({ project, onClose }) {
                                 transition={{ delay: 0.3 }}
                                 className="bg-white p-6 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-200/60"
                             >
-                                <h3 className="text-2xl font-bold text-textMain mb-4 flex items-center gap-3">
+                                <h3 className="text-2xl font-medium text-textMain mb-4 flex items-center gap-3">
                                     <div className="p-2 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg">
                                         <Target className="text-primary" size={22} />
                                     </div>
@@ -88,7 +88,7 @@ export default function ProjectDetails({ project, onClose }) {
                                 transition={{ delay: 0.4 }}
                                 className="bg-white p-6 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-200/60"
                             >
-                                <h3 className="text-2xl font-bold text-textMain mb-4 flex items-center gap-3">
+                                <h3 className="text-2xl font-medium text-textMain mb-4 flex items-center gap-3">
                                     <div className="p-2 bg-gradient-to-br from-emerald-500/20 to-emerald-500/10 rounded-lg">
                                         <CheckCircle className="text-emerald-600" size={22} />
                                     </div>
@@ -104,7 +104,7 @@ export default function ProjectDetails({ project, onClose }) {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
                             >
-                                <h3 className="text-2xl font-bold text-textMain mb-6 flex items-center gap-3">
+                                <h3 className="text-2xl font-medium text-textMain mb-6 flex items-center gap-3">
                                     <div className="p-2 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-lg">
                                         <Layers className="text-secondary" size={22} />
                                     </div>
@@ -137,7 +137,7 @@ export default function ProjectDetails({ project, onClose }) {
                                 transition={{ delay: 0.6 }}
                                 className="bg-white p-6 rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-200/60"
                             >
-                                <h3 className="text-sm font-bold text-textMain uppercase tracking-wider mb-4 flex items-center gap-2">
+                                <h3 className="text-sm font-medium text-textMain uppercase tracking-wider mb-4 flex items-center gap-2">
                                     <Cpu size={18} className="text-primary" /> Technologies
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
@@ -157,7 +157,7 @@ export default function ProjectDetails({ project, onClose }) {
                                 className="space-y-3"
                             >
                                 {project.links?.demo && (
-                                    <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-bold rounded-xl transition-all shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 group">
+                                    <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-medium rounded-xl transition-all shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 group">
                                         <ExternalLink size={18} className="group-hover:rotate-12 transition-transform" />
                                         Live Demo
                                     </a>

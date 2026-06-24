@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
+import WhyHireMe from './sections/WhyHireMe';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
-import Education from './sections/Education';
-import Contact from './sections/Contact';
+import Blog from './sections/Blog';
+import InteractiveResume from './sections/InteractiveResume';
 import Footer from './components/Footer';
 
 function App() {
@@ -21,17 +22,8 @@ function App() {
   });
 
   useEffect(() => {
-    // Single page routing logic: scroll to section when path changes
-    const path = location.pathname.replace('/', '');
-    if (path) {
-      const element = document.getElementById(path);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }, [location]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
 
   useEffect(() => {
     console.log("Antigravity Protocol v2 Initialized");
@@ -52,13 +44,15 @@ function App() {
       <Navbar />
 
       {/* Main Content Sections */}
-      <main>
-        <section id="home"><Hero /></section>
-        <section id="about"><About /></section>
-        <section id="skills"><Skills /></section>
-        <section id="projects"><Projects /></section>
-        <section id="education"><Education /></section>
-        <section id="contact"><Contact /></section>
+      <main className="min-h-screen">
+        <Routes>
+          <Route path="/" element={<><Hero /><WhyHireMe /></>} />
+          <Route path="/about" element={<About />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/resume" element={<InteractiveResume />} />
+        </Routes>
       </main>
 
       {/* Footer & Global Actions */}

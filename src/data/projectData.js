@@ -19,7 +19,8 @@ export const projectData = {
         images: [
             "/images/ecommerce_mockup_1772640432079.png",
             "/images/system_architect_visual_1772640355787.png",
-            "/images/performance_metrics_visual_v2_1772640559011.png"
+            "/images/financial_metrics_visualization_1772658522572.png",
+            "/images/event_types_gallery_visual_1772658217207.png"
         ],
         techStack: {
             Frontend: ["React.js", "Vite", "Tailwind CSS (Glassmorphism UI)", "Framer Motion (Animations)"],

@@ -16,7 +16,7 @@ const ProjectDetails = () => {
         return (
             <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 pt-24 pb-20 px-6 font-sans flex items-center justify-center">
                 <div className="text-center bg-white rounded-3xl shadow-2xl shadow-slate-300/50 p-12 border border-slate-200/60 max-w-md">
-                    <h1 className="text-4xl font-bold mb-4 text-textMain font-display">Project Not Found</h1>
+                    <h1 className="text-4xl font-medium mb-4 text-textMain font-display">Project Not Found</h1>
                     <p className="text-textSoft mb-8 text-lg">The project you're looking for doesn't exist.</p>
                     <Link to="/" className="inline-flex items-center text-primary hover:text-secondary transition-all hover:translate-x-[-4px] font-semibold group">
                         <ArrowLeft size={20} className="mr-2 group-hover:animate-pulse" />
@@ -44,7 +44,7 @@ const ProjectDetails = () => {
                     <header className="mb-12 bg-white rounded-3xl shadow-xl shadow-blue-100/50 p-8 md:p-12 border border-slate-200/60 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-3xl -z-0"></div>
                         <div className="relative z-10">
-                            <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent mb-4 font-display leading-tight">
+                            <h1 className="text-4xl md:text-6xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent mb-4 font-display leading-tight">
                                 {project.title}
                             </h1>
                             <p className="text-xl md:text-2xl text-textSoft font-light leading-relaxed">{project.subtitle}</p>
@@ -63,7 +63,7 @@ const ProjectDetails = () => {
                             >
                                 <div className="flex items-center mb-6">
                                     <div className="w-1.5 h-12 bg-gradient-to-b from-primary to-secondary rounded-full mr-4"></div>
-                                    <h2 className="text-3xl font-bold text-textMain font-display">The Challenge</h2>
+                                    <h2 className="text-3xl font-medium text-textMain font-display">The Challenge</h2>
                                 </div>
                                 <p className="text-textSoft leading-relaxed text-lg">{project.challenge}</p>
                             </motion.section>
@@ -78,7 +78,7 @@ const ProjectDetails = () => {
                             >
                                 <div className="flex items-center mb-6">
                                     <div className="w-1.5 h-12 bg-gradient-to-b from-secondary to-accent rounded-full mr-4"></div>
-                                    <h2 className="text-3xl font-bold text-textMain font-display">The Solution</h2>
+                                    <h2 className="text-3xl font-medium text-textMain font-display">The Solution</h2>
                                 </div>
                                 <div className="text-textSoft leading-relaxed text-lg whitespace-pre-line">{project.solution}</div>
                             </motion.section>
@@ -92,7 +92,7 @@ const ProjectDetails = () => {
                             >
                                 <div className="flex items-center mb-6">
                                     <div className="w-1.5 h-12 bg-gradient-to-b from-accent to-primary rounded-full mr-4"></div>
-                                    <h2 className="text-3xl font-bold text-textMain font-display">Key Features</h2>
+                                    <h2 className="text-3xl font-medium text-textMain font-display">Key Features</h2>
                                 </div>
                                 <div className="grid gap-4">
                                     {project.features.map((feature, idx) => (
@@ -105,7 +105,7 @@ const ProjectDetails = () => {
                                             whileHover={{ scale: 1.02, translateX: 8 }}
                                             className="bg-gradient-to-br from-white to-blue-50/30 p-6 rounded-xl border-2 border-slate-200/60 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 transition-all cursor-pointer group"
                                         >
-                                            <h3 className="text-xl font-bold text-textMain mb-2 flex items-center group-hover:text-primary transition-colors">
+                                            <h3 className="text-xl font-medium text-textMain mb-2 flex items-center group-hover:text-primary transition-colors">
                                                 <CheckCircle2 size={22} className="mr-3 flex-shrink-0 text-primary group-hover:scale-110 transition-transform" />
                                                 {feature.title}
                                             </h3>
@@ -125,7 +125,7 @@ const ProjectDetails = () => {
                                 >
                                     <div className="flex items-center mb-6">
                                         <div className="w-1.5 h-12 bg-gradient-to-b from-accent to-secondary rounded-full mr-4"></div>
-                                        <h2 className="text-3xl font-bold text-textMain font-display">Preview</h2>
+                                        <h2 className="text-3xl font-medium text-textMain font-display">Preview</h2>
                                     </div>
                                     <div className="grid gap-6">
                                         {project.images.map((img, idx) => (
@@ -161,11 +161,11 @@ const ProjectDetails = () => {
                                 transition={{ delay: 0.4 }}
                                 className="bg-white p-8 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200/60 lg:sticky lg:top-32"
                             >
-                                <h3 className="text-2xl font-bold mb-6 text-textMain border-b-2 border-slate-200 pb-4 font-display">Technologies</h3>
+                                <h3 className="text-2xl font-medium mb-6 text-textMain border-b-2 border-slate-200 pb-4 font-display">Technologies</h3>
                                 <div className="space-y-6">
                                     {Object.entries(project.techStack).map(([category, techs]) => (
                                         <div key={category}>
-                                            <h4 className="text-xs uppercase tracking-widest text-textSoft font-bold mb-3 flex items-center">
+                                            <h4 className="text-xs uppercase tracking-widest text-textSoft font-medium mb-3 flex items-center">
                                                 <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
                                                 {category}
                                             </h4>

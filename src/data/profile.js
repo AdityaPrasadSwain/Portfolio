@@ -15,27 +15,19 @@ const profile = {
         {
             degree: "Bachelor in Computer Application (BCA)",
             institution: "Centurion University of Technology & Management (CUTM)",
-            year: "2022-2025",
-            score: "7.52 CGPA"
+            year: "2022-2025"
         },
         {
             degree: "Higher Secondary (+2 Science)",
             institution: "Arihant Higher Secoundery School",
-            year: "2020-2022",
-            score: "62.5%"
-        },
-        {
-            degree: "Matriculation (10th)",
-            institution: "Saraswati Sishu Vidya Mandir, Chatrapur",
-            year: "2020",
-            score: "52.83%"
+            year: "2020-2022"
         }
     ],
     skills: {
-        languages: ["Java", "SQL", "JavaScript", "C++"],
+        languages: ["Java", "JavaScript"],
         frameworks: ["Spring Boot", "Hibernate", "JPA", "Spring Security", "React", "Tailwind"],
-        databases: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Aerospike"],
-        tools: ["Docker", "K8s", "Kafka", "RabbitMQ", "S3", "Maven", "Git", "ELK Stack", "Prometheus", "New Relic", "Swagger", "JUnit", "Mockito"],
+        databases: ["PostgreSQL", "Redis"],
+        tools: ["Docker", "K8s", "Kafka", "RabbitMQ", "S3", "Maven", "Git", "ELK Stack", "New Relic", "Swagger", "JUnit", "Mockito"],
         ai: ["OpenAI API", "Prompt Engineering"]
     },
     internship: {
@@ -47,23 +39,45 @@ const profile = {
     projects: [
         {
             title: "Udrakala Ecommerce",
+            subtitle: "Preserving Heritage in a Digital Age",
             category: "Online Store",
-            tech: ["Spring Boot", "React", "PostgreSQL", "Docker"],
-            description: "A website for artisans to sell their products directly to customers, with secure payments and order tracking.",
+            tech: ["Spring Boot", "React.js", "MySQL", "Docker", "Tailwind CSS"],
+            description: "A robust, full-stack e-commerce ecosystem designed to preserve Odisha's handloom heritage by connecting artisans directly with a global audience.",
             role: "Full Stack Developer",
-            challenge: "Helping rural artists sell their work worldwide by building a trusted and easy-to-use online platform.",
+            vision: "To digitize and preserve the intangible cultural heritage of Odisha by empowering rural artisans with a sustainable, middleman-free digital economy.",
+            metrics: ["15% increase in artisan profit margins", "30% faster order processing", "99.9% payment security"],
+            supplementaryImage: "/images/ecommerce_mockup_1772640432079.png",
+            challenge: "Odisha's rich handloom tradition faces threats from mass-produced imitations and limited market access. The challenge was to bridge the gap between remote artisans and global buyers, ensuring fair pricing and authenticity.",
+            solution: "Built a multi-role ecosystem with dedicated portals for Artisans (Sellers), Customers, and Admins. Implemented AI-powered assistance and a 'Pack Order' video feature for trust-first logistics.",
+            features: [
+                "AI Buying Assistant for personalized suggestions",
+                "Direct-to-Consumer Artisan Marketplace (RBAC)",
+                "Trust-First Logistics with video verification",
+                "Automated Financial Module for seller payouts"
+            ],
             links: {
-                demo: "#",
+                demo: "https://udrakala-demo.example.com",
                 github: "https://github.com/AdityaPrasadSwain/OdishaProduct"
             }
         },
         {
             title: "AI-Driven Learning Platform",
+            subtitle: "Intelligent Education Ecosystem",
             category: "Education Tool",
-            tech: ["MERN Stack", "OpenAI API", "Socket.io", "Tailwind"],
-            description: "An intelligent learning system with AI tutors and collaboration tools for students and teachers.",
+            tech: ["MERN Stack", "OpenAI API", "Socket.io", "Tailwind", "Framer Motion"],
+            description: "An intelligent learning system featuring AI tutors and real-time collaboration tools for students and educators.",
             role: "Full Stack Developer",
-            challenge: "Building an AI tutor that creates quizzes from videos in real-time.",
+            vision: "To democratize high-quality, personalized education through generative AI, making advanced tutoring accessible to every student regardless of their location.",
+            metrics: ["40% improvement in student engagement", "50% reduce in content creation time", "Real-time query resolution"],
+            supplementaryImage: "/images/ai_learning_mockup_v2_1772640537360.png",
+            challenge: "Creating an engaging, personalized learning experience that can dynamically generate educational content and provide real-time feedback to students.",
+            solution: "Integrated OpenAI API for an intelligent tutor that generates quizzes from videos in real-time. Leveraged Socket.io for seamless collaborative features.",
+            features: [
+                "Real-time Video-to-Quiz generation",
+                "AI-Powered Personal Tutor for 24/7 support",
+                "Interactive Collaborative Study Rooms",
+                "Performance Analytics Dashboard"
+            ],
             links: {
                 demo: "#",
                 github: "https://github.com/AdityaPrasadSwain/Learning-Platfrom"
@@ -71,11 +85,22 @@ const profile = {
         },
         {
             title: "Expense Management System",
+            subtitle: "Enterprise-Grade Financial Control",
             category: "Business Tool",
             tech: ["Java", "Spring Security", "MySQL", "React", "Chart.js"],
-            description: "A system for businesses to track expenses, manage approvals, and see spending data.",
+            description: "A comprehensive system for businesses to track expenses, manage approvals, and visualize spending patterns with high accuracy.",
             role: "Backend Developer",
-            challenge: "Making the approval process automatic while keeping exact records for safety.",
+            vision: "To provide organizations with a transparent, automated, and error-free financial ecosystem that simplifies complex approval workflows and ensures fiscal accountability.",
+            metrics: ["90% reduction in approval delays", "100% audit trail compliance", "Real-time budget tracking"],
+            supplementaryImage: "/images/financial_metrics_visualization_1772658522572.png",
+            challenge: "Automating the complex approval hierarchy while maintaining a strict audit trail and ensuring data integrity for financial records.",
+            solution: "Developed a robust RBAC system and an automated approval workflow engine using Spring Security. Integrated Chart.js for high-level financial visualizations.",
+            features: [
+                "Automated Layered Approval Workflow",
+                "Real-time Expense Visualization & Reporting",
+                "Role-Based Access Control (RBAC)",
+                "Secure Audit Logging for Compliance"
+            ],
             links: {
                 demo: "#",
                 github: "https://github.com/Pallabis52/Enterprise-Expense-Management-System"
@@ -83,11 +108,22 @@ const profile = {
         },
         {
             title: "Event Management System",
-            category: "Ticketing System",
+            subtitle: "Celebrations Refined through Technology",
+            category: "Festive Planning",
             tech: ["Spring Cloud", "Kafka", "Redis", "Next.js", "PostgreSQL"],
-            description: "A fast system for booking tickets and tracking event attendees in real-time without errors.",
-            role: "Backend Developer",
-            challenge: "Preventing double-booking during busy times using the right technology to keep everything consistent.",
+            description: "A premium event planning and management platform designed for high-end celebrations like luxurious weddings, birthdays, and corporate galas.",
+            role: "Full Stack Developer",
+            vision: "To create an elegant, high-concurrency event infrastructure that handles massive celebration spikes with zero data loss, ensuring a fair and seamless experience for guests and planners globally.",
+            metrics: ["Handles 10k+ concurrent users", "<100ms average response time", "Zero double-booking records"],
+            supplementaryImage: "/images/event_types_gallery_visual_1772658217207.png",
+            challenge: "Ensuring seamless coordination between vendors and planners during high-pressure events while maintaining real-time occupancy and guest-list synchronization.",
+            solution: "Implemented a distributed architecture with Redis for real-time seat locking and Kafka for event-driven notifications. Built a high-fidelity dashboard for vendor management.",
+            features: [
+                "Custom Event Theming (Wedding, Birthday, Corporate)",
+                "Real-time Guest List & RSVP Management",
+                "Interactive Venue Mapping & Seat Allocation",
+                "Scalable High-performance Vendor API"
+            ],
             links: {
                 demo: "#",
                 github: "https://github.com/AdityaPrasadSwain/Event-Management-System"

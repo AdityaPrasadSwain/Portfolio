@@ -71,7 +71,7 @@ const Story = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tighter text-white">My Journey</h2>
+                    <h2 className="text-4xl md:text-6xl font-medium mb-4 tracking-normal text-white">My Journey</h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full"></div>
                 </motion.div>
             </div>
@@ -114,13 +114,13 @@ const Story = () => {
                                         initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
                                         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                                         transition={{ duration: 1, ease: "easeOut" }}
-                                        className="text-[120px] md:text-[200px] font-black text-white/5 leading-none select-none absolute -top-12 -left-12 md:-left-20 z-0"
+                                        className="text-[120px] md:text-[200px] font-semibold text-white/5 leading-none select-none absolute -top-12 -left-12 md:-left-20 z-0"
                                     >
                                         0{chapter.id}
                                     </motion.div>
                                     <div className="relative z-10">
                                         <h3 className="text-accent text-lg md:text-2xl font-mono tracking-[0.2em] mb-2 uppercase">Chapter</h3>
-                                        <div className="text-5xl md:text-8xl font-bold text-white tracking-tighter">
+                                        <div className="text-5xl md:text-8xl font-medium text-white tracking-normal">
                                             {chapter.year}
                                         </div>
                                     </div>
@@ -132,7 +132,7 @@ const Story = () => {
                                         initial={{ opacity: 0, y: 20 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.2, duration: 0.8 }}
-                                        className="text-3xl md:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60"
+                                        className="text-3xl md:text-5xl font-medium mb-8 text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60"
                                     >
                                         {chapter.title}
                                     </motion.h3>

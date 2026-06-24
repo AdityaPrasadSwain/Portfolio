@@ -29,7 +29,7 @@ const Loader = ({ onComplete }) => {
             exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
         >
             <div className="relative mb-4">
-                <span className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50 tracking-tighter">
+                <span className="text-4xl md:text-6xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50 tracking-normal">
                     ADITYA.
                 </span>
             </div>

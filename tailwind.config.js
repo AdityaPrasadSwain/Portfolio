@@ -18,8 +18,8 @@ export default {
         border: "rgba(255, 255, 255, 0.05)",
       },
       fontFamily: {
-        display: ["Montserrat", "sans-serif"],
-        body: ["Inter", "sans-serif"],
+        display: ["Open Sans", "sans-serif"],
+        body: ["Open Sans", "sans-serif"],
         mono: ["Roboto Mono", "monospace"],
       },
       animation: {

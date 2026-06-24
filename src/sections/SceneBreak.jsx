@@ -48,7 +48,7 @@ const SceneBreak = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
-                    className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-white"
+                    className="text-5xl md:text-7xl font-medium tracking-normal mb-4 text-white"
                 >
                     Code Is Art.
                 </motion.h2>

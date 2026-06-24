@@ -62,7 +62,7 @@ const AnimatedLogo = () => {
     return (
         <motion.a
             href="#"
-            className="relative z-50 flex items-center gap-0.5 text-2xl font-bold tracking-tighter cursor-pointer no-underline bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+            className="relative z-50 flex items-center gap-0.5 text-2xl font-medium tracking-normal cursor-pointer no-underline bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
