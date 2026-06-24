@@ -136,8 +136,14 @@ const About = () => {
  </motion.div>
  </div>
  
- {/* Experience Section */}
- <div className="mt-32 relative z-10">
+ </div>
+ </div>
+ </section>
+ <Education />
+ <section id="experience" className="py-24 relative bg-background overflow-hidden border-t border-white/5">
+ <div className="container mx-auto px-6 relative z-10">
+ <div className="max-w-7xl mx-auto">
+ <div className="relative z-10">
  <div className="flex flex-col items-center text-center mb-16">
  <motion.div
  initial={{ opacity: 0, scale: 0.9 }}
@@ -179,7 +185,6 @@ const About = () => {
  </div>
  </div>
  </section>
- <Education />
  </>
  );
 };
