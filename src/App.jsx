@@ -1,29 +1,24 @@
 import React, { useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { useLocation, Routes, Route } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import WhyHireMe from './sections/WhyHireMe';
 import Skills from './sections/Skills';
 import Projects from './sections/Projects';
+import Certificates from './sections/Certificates';
 import Blog from './sections/Blog';
 import InteractiveResume from './sections/InteractiveResume';
 import Footer from './components/Footer';
 
 function App() {
   const { scrollYProgress } = useScroll();
-  const location = useLocation();
-
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location.pathname]);
 
   useEffect(() => {
     console.log("Antigravity Protocol v2 Initialized");
@@ -45,14 +40,14 @@ function App() {
 
       {/* Main Content Sections */}
       <main className="min-h-screen">
-        <Routes>
-          <Route path="/" element={<><Hero /><WhyHireMe /></>} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/resume" element={<InteractiveResume />} />
-        </Routes>
+        <Hero />
+        <WhyHireMe />
+        <About />
+        <Skills />
+        <Projects />
+        <Certificates />
+        <Blog />
+        <InteractiveResume />
       </main>
 
       {/* Footer & Global Actions */}

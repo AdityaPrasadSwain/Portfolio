@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Cpu, Globe, ArrowRight, Home, User, Code2, Briefcase, BookOpen, FileText } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Menu, X, Cpu, Globe, ArrowRight, Home, User, Code2, Briefcase, BookOpen, FileText, Award } from 'lucide-react';
+// Removed react-router-dom Link for hash routing
 import profile from '../data/profile';
 
 const Navbar = () => {
@@ -17,12 +17,12 @@ const Navbar = () => {
  }, []);
 
  const navLinks = [
- { name: 'Home', href: '/', icon: Home },
- { name: 'About', href: '/about', icon: User },
- { name: 'Skills', href: '/skills', icon: Code2 },
- { name: 'Projects', href: '/projects', icon: Briefcase },
- { name: 'Blog', href: '/blog', icon: BookOpen },
- { name: 'Resume', href: '/resume', icon: FileText }
+ { name: 'Home', href: '#home', icon: Home },
+ { name: 'About', href: '#about', icon: User },
+ { name: 'Skills', href: '#skills', icon: Code2 },
+ { name: 'Projects', href: '#projects', icon: Briefcase },
+ { name: 'Blog', href: '#blog', icon: BookOpen },
+ { name: 'Resume', href: '#resume', icon: FileText }
  ];
 
  return (
@@ -31,11 +31,11 @@ const Navbar = () => {
  }`}
  >
  <div className="container mx-auto px-6">
- <div className={`relative flex items-center justify-between transition-all duration-700 ${isScrolled ? 'px-8 py-3 glass-main rounded-full border border-white/5 shadow-2xl max-w-5xl mx-auto' : 'max-w-7xl mx-auto'
+ <div className={`relative flex items-center justify-between transition-all duration-700 ${isScrolled ? 'px-8 py-3 glass-main rounded-full border-transparent shadow-2xl max-w-5xl mx-auto' : 'max-w-7xl mx-auto'
  }`}>
  {/* Logo */}
- <Link
- to="/"
+ <a
+ href="#home"
  className="flex items-center gap-3 group"
  >
  <div className="relative flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
@@ -57,34 +57,34 @@ const Navbar = () => {
  <text x="60" y="35" fontFamily="system-ui, sans-serif" fontSize="38" fontWeight="900" fontStyle="italic" fill="url(#apsFront)" textAnchor="middle" letterSpacing="4">A.P.S</text>
  </svg>
  </div>
- </Link>
+ </a>
 
  {/* Desktop Menu */}
  <div className="hidden lg:flex items-center gap-10">
  {navLinks.map((link, i) => {
  const Icon = link.icon;
  return (
- <Link
+ <a
  key={link.name}
- to={link.href}
+ href={link.href}
  className="flex items-center gap-2 text-sm font-display font-medium uppercase tracking-widest text-white/60 hover:text-primary transition-all relative group"
  >
  <Icon size={16} className="text-primary/70 group-hover:text-primary transition-colors" />
  {link.name}
  <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-500" />
- </Link>
+ </a>
  )
  })}
  </div>
 
  {/* Action Button */}
  <div className="flex items-center gap-5">
- <Link
- to="/resume"
+ <a
+ href="#resume"
  className="hidden md:flex items-center gap-2 h-11 px-6 glass-main rounded-xl border border-white/5 text-sm font-display font-medium uppercase tracking-widest text-primary hover:bg-primary/10 hover:border-primary/20 transition-all"
  >
  <FileText size={16} /> Resume <ArrowRight size={14} className="rotate-90 ml-1" />
- </Link>
+ </a>
 
  {/* Mobile Menu Toggle */}
  <button
@@ -117,15 +117,15 @@ const Navbar = () => {
  {navLinks.map((link, i) => {
  const Icon = link.icon;
  return (
- <Link
+ <a
  key={link.name}
- to={link.href}
+ href={link.href}
  onClick={() => setIsMobileMenuOpen(false)}
  className="flex items-center gap-4 text-4xl font-display font-semibold text-white hover:text-primary uppercase tracking-normal"
  >
  <Icon size={32} className="text-primary/70" />
  {link.name}
- </Link>
+ </a>
  )
  })}
  </div>

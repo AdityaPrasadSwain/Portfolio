@@ -92,3 +92,20 @@
 canvas {
   touch-action: none;
 }
+
+/* React-PDF override to fit container */
+.react-pdf__Page {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.react-pdf__Page__canvas {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
