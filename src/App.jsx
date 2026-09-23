@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -38,15 +39,15 @@ function App() {
       <Navbar />
 
       {/* Main Content Sections */}
-      <main className="min-h-screen">
-        <Hero />
-        <WhyHireMe />
-        <About />
-        <Skills />
-        <Projects />
-        <Certificates />
-        <Blog />
-        <InteractiveResume />
+      <main className="min-h-screen pt-24">
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/about" element={<><WhyHireMe /><About /></>} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/projects" element={<><Projects /><Certificates /></>} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/resume" element={<InteractiveResume />} />
+        </Routes>
       </main>
 
       {/* Footer & Global Actions */}
