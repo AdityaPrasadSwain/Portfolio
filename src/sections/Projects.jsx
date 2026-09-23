@@ -29,7 +29,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-32 relative bg-background overflow-hidden border-t border-white/5">
+    <section id="projects" className="py-32 relative bg-transparent overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-24">
@@ -154,7 +154,7 @@ const Projects = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 100 }}
               transition={{ type: "spring", damping: 30, stiffness: 200 }}
-              className="bg-background rounded-[4rem] w-full max-w-7xl relative z-10 border border-white/5 shadow-2xl overflow-hidden flex flex-col lg:flex-row max-h-[90vh]"
+              className="bg-transparent rounded-[4rem] w-full max-w-7xl relative z-10 border border-white/5 shadow-2xl overflow-hidden flex flex-col lg:flex-row max-h-[90vh]"
             >
               <button
                 onClick={() => setSelectedProject(null)}

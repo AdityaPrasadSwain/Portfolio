@@ -9,7 +9,7 @@ const Footer = () => {
  };
 
  return (
- <footer className="py-20 relative bg-background overflow-hidden border-t border-white/5">
+ <footer className="py-20 relative bg-transparent overflow-hidden border-t border-white/5">
  <div className="container mx-auto px-6 relative z-10">
  <div className="max-w-7xl mx-auto">
  <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-20">

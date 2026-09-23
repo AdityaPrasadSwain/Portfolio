@@ -7,7 +7,7 @@ import Education from './Education';
 const About = () => {
  return (
  <>
- <section id="about" className="py-32 relative bg-background overflow-hidden pt-40">
+ <section id="about" className="py-32 relative bg-transparent overflow-hidden pt-40">
  {/* Subtle Gradient Glows */}
  <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/2 blur-[160px] rounded-full pointer-events-none" />
  <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-secondary/2 blur-[160px] rounded-full pointer-events-none" />
@@ -140,7 +140,7 @@ const About = () => {
  </div>
  </section>
  <Education />
- <section id="experience" className="py-24 relative bg-background overflow-hidden border-t border-white/5">
+ <section id="experience" className="py-24 relative bg-transparent overflow-hidden border-t border-white/5">
  <div className="container mx-auto px-6 relative z-10">
  <div className="max-w-7xl mx-auto">
  <div className="relative z-10">

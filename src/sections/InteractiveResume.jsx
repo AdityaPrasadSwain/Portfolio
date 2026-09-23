@@ -4,10 +4,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    'pdfjs-dist/build/pdf.worker.min.mjs',
-    import.meta.url,
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 export default function InteractiveResume() {
     const [numPages, setNumPages] = useState(null);
@@ -33,7 +30,7 @@ export default function InteractiveResume() {
     }, []);
 
     return (
-        <section id="resume" className="py-32 relative overflow-hidden bg-background">
+        <section id="resume" className="py-32 relative overflow-hidden bg-transparent">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full -z-10" />
 
             <div className="container mx-auto px-6">
@@ -56,7 +53,7 @@ export default function InteractiveResume() {
                 >
                     <div className="bg-white/5 border border-white/10 p-4 md:p-8 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-xl w-full flex flex-col items-center overflow-x-auto no-scrollbar">
                         <Document
-                            file="/resume/ATS_Aditya_Prasad_Swain_Resume.pdf"
+                            file="./resume/ATS_Aditya_Prasad_Swain_Resume.pdf"
                             onLoadSuccess={onDocumentLoadSuccess}
                             className="flex flex-col items-center gap-6"
                             loading={

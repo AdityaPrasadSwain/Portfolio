@@ -32,7 +32,7 @@ const AnimatedSphere = () => {
 
 const SceneBreak = () => {
     return (
-        <section className="h-[70vh] w-full bg-background relative flex items-center justify-center overflow-hidden">
+        <section className="h-[70vh] w-full bg-transparent relative flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 z-0">
                 <Canvas camera={{ position: [0, 0, 5] }}>
                     <ambientLight intensity={1} />

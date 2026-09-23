@@ -135,7 +135,7 @@ const Skills = () => {
  };
 
  return (
- <section id="skills" className="py-24 relative bg-background overflow-hidden">
+ <section id="skills" className="py-24 relative bg-transparent overflow-hidden">
  {/* Ambient Background Elements */}
  <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
  <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />

@@ -33,7 +33,7 @@ const Hero = () => {
   }, [text, isDeleting, loopNum, typingSpeed, roles]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background py-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-20">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-[0.1] mask-radial" />

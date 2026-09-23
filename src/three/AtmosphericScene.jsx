@@ -94,7 +94,7 @@ const CameraRig = () => {
 
 const AtmosphericScene = () => {
     return (
-        <div className="absolute inset-0 z-0 bg-background transition-opacity duration-1000 ease-in-out">
+        <div className="absolute inset-0 z-0 bg-transparent transition-opacity duration-1000 ease-in-out">
             <Canvas
                 camera={{ position: [0, 0, 6], fov: 45 }}
                 gl={{ antialias: false, toneMapping: THREE.ACESFilmicToneMapping, outputColorSpace: THREE.SRGBColorSpace }}

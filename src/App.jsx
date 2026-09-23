@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -25,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative bg-background selection:bg-primary/30 selection:text-black">
+    <div className="relative bg-transparent selection:bg-primary/30 selection:text-black">
       {/* Premium Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary z-[300] origin-left"
@@ -53,9 +52,12 @@ function App() {
       {/* Footer & Global Actions */}
       <Footer />
 
-      {/* Dynamic Background Noise/Lighting */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-mesh-premium opacity-30" />
+      {/* Dynamic Premium Aurora Background */}
+      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+        <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-primary/20 blur-[120px] animate-float mix-blend-screen" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-secondary/20 blur-[120px] animate-float-delayed mix-blend-screen" />
+        <div className="absolute top-[20%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-indigo-500/20 blur-[120px] animate-float-slow mix-blend-screen" />
+        <div className="absolute top-0 left-0 w-full h-full bg-mesh-premium opacity-40" />
       </div>
     </div>
   );

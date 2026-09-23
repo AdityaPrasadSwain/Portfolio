@@ -43,7 +43,7 @@ const WhyHireMe = () => {
   ];
 
   return (
-    <section id="why-hire-me" className="py-24 relative bg-background overflow-hidden">
+    <section id="why-hire-me" className="py-24 relative bg-transparent overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />

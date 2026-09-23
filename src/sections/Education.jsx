@@ -5,7 +5,7 @@ import profile from '../data/profile';
 
 const Education = () => {
  return (
- <section id="education" className="py-24 relative bg-background overflow-hidden border-t border-white/5">
+ <section id="education" className="py-24 relative bg-transparent overflow-hidden border-t border-white/5">
  {/* Ambient Background Elements */}
  <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-secondary/5 blur-[100px] rounded-full -translate-y-1/2" />
 

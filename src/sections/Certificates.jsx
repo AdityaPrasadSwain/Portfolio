@@ -16,15 +16,15 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 const certificates = [
   {
     title: 'Java Full Stack',
-    file: '/certificates/Java_Full_Stack_Certificate.pdf',
+    file: './certificates/Java_Full_Stack_Certificate.pdf',
   },
   {
     title: 'PostgreSQL',
-    file: '/certificates/PostgreSQL_Certificate.pdf',
+    file: './certificates/PostgreSQL_Certificate.pdf',
   },
   {
     title: 'Maven',
-    file: '/certificates/Udemy_Maven.pdf',
+    file: './certificates/Udemy_Maven.pdf',
   }
 ];
 
