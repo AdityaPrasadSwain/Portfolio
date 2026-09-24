@@ -51,7 +51,7 @@ const Projects = () => {
           {/* Section Controls */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16">
             <div className="space-y-4">
-              <h4 className="text-[10px] font-mono font-semibold text-primary uppercase tracking-[0.5em] mb-4">Gallery Controls</h4>
+              <h3 className="text-[10px] font-mono font-semibold text-primary uppercase tracking-[0.5em] mb-4">Gallery Controls</h3>
               <div className="flex items-center gap-6">
                 <div className="h-2 w-48 bg-white/[0.03] rounded-full overflow-hidden border border-white/5 relative">
                   <motion.div

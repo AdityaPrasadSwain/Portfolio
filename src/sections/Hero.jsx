@@ -55,7 +55,7 @@ const Hero = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              <span className="text-[10px] font-mono font-medium uppercase tracking-[0.3em] text-primary">Available for Collaboration</span>
+              <span className="text-xs font-mono font-medium uppercase tracking-[0.3em] text-primary">Available for Collaboration</span>
             </div>
           </motion.div>
 
@@ -73,7 +73,7 @@ const Hero = () => {
 
           {/* Dynamic Rotating Roles with Typing Effect */}
           <div className="h-12 mb-10 overflow-hidden relative w-full flex justify-center items-center">
-            <div className="text-xl md:text-3xl font-display font-medium text-white/60 uppercase tracking-widest min-h-[1.5em] flex items-center">
+            <div className="text-xl md:text-3xl font-display font-medium text-white/60 tracking-widest min-h-[1.5em] flex items-center">
               <span>{text}</span>
               <span className="w-1 h-8 bg-primary ml-1 animate-pulse" />
             </div>

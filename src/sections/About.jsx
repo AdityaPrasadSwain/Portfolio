@@ -72,8 +72,8 @@ const About = () => {
  <Zap size={24} />
  </div>
  <div>
- <h4 className="text-white font-display font-semibold text-4xl md:text-5xl leading-tight uppercase mb-4">High<br />Performance.</h4>
- <p className="text-sm md:text-base text-textSoft font-light border-t border-white/5 pt-6 mt-6 uppercase tracking-widest leading-relaxed">
+ <h4 className="text-white font-display font-semibold text-4xl md:text-5xl leading-tight mb-4">High<br />Performance.</h4>
+ <p className="text-sm md:text-base text-textSoft font-light border-t border-white/5 pt-6 mt-6 tracking-widest leading-relaxed">
  Optimized for <span className="text-secondary font-medium">millisecond</span> latency and extreme vertical/horizontal scalability.
  </p>
  </div>

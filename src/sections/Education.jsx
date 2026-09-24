@@ -62,7 +62,7 @@ const Education = () => {
  <div className="flex items-center justify-center lg:justify-start gap-2.5 text-secondary font-mono font-medium text-[8px] uppercase tracking-[0.4em] mb-2">
  <MapPin size={10} /> Odisha, India
  </div>
- <h3 className="text-2xl md:text-3xl font-display font-semibold text-white tracking-normal mb-2 leading-tight uppercase group-hover:text-glow-blue transition-all duration-700">
+ <h3 className="text-2xl md:text-3xl font-display font-semibold text-white tracking-normal mb-2 leading-tight group-hover:text-glow-blue transition-all duration-700">
  {edu.institution}
  </h3>
  <p className="text-lg text-textSoft font-light group-hover:text-white transition-colors">{edu.degree}</p>
