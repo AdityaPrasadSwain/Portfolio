@@ -17,12 +17,12 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Home', path: '/', icon: Home },
-        { name: 'About', path: '/about', icon: User },
-        { name: 'Skills', path: '/skills', icon: Code2 },
-        { name: 'Projects', path: '/projects', icon: Briefcase },
-        { name: 'Blog', path: '/blog', icon: BookOpen },
-        { name: 'Resume', path: '/resume', icon: FileText }
+        { name: 'Home', path: '/#home', icon: Home },
+        { name: 'About', path: '/#about', icon: User },
+        { name: 'Skills', path: '/#skills', icon: Code2 },
+        { name: 'Projects', path: '/#projects', icon: Briefcase },
+        { name: 'Blog', path: '/#blog', icon: BookOpen },
+        { name: 'Resume', path: '/#resume', icon: FileText }
     ];
 
     return (

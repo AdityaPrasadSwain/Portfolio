@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -9,7 +10,28 @@ import Projects from './sections/Projects';
 import Certificates from './sections/Certificates';
 import Blog from './sections/Blog';
 import InteractiveResume from './sections/InteractiveResume';
+import ProjectDetails from './pages/ProjectDetails';
 import Footer from './components/Footer';
+
+// Scroll to hash or top component
+const ScrollManager = () => {
+  const { pathname, hash } = useLocation();
+  
+  useEffect(() => {
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash.replace('#', ''));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+  
+  return null;
+};
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -25,6 +47,8 @@ function App() {
 
   return (
     <div className="relative bg-transparent selection:bg-primary/30 selection:text-black">
+      <ScrollManager />
+      
       {/* Premium Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary z-[300] origin-left"
@@ -39,14 +63,21 @@ function App() {
 
       {/* Main Content Sections */}
       <main className="min-h-screen">
-        <Hero />
-        <WhyHireMe />
-        <About />
-        <Skills />
-        <Projects />
-        <Certificates />
-        <Blog />
-        <InteractiveResume />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Hero />
+              <WhyHireMe />
+              <About />
+              <Skills />
+              <Projects />
+              <Certificates />
+              <Blog />
+              <InteractiveResume />
+            </>
+          } />
+          <Route path="/projects/:id" element={<ProjectDetails />} />
+        </Routes>
       </main>
 
       {/* Footer & Global Actions */}
