@@ -92,7 +92,7 @@ const About = () => {
  </div>
  <div>
  <h4 className="text-white font-display font-semibold text-4xl md:text-5xl leading-tight uppercase mb-4">Elite<br />Security.</h4>
- <p className="text-sm md:text-base text-textSoft font-light border-t border-white/5 pt-6 mt-6 uppercase tracking-widest leading-relaxed">
+ <p className="text-sm md:text-base text-textSoft font-light border-t border-white/5 pt-6 mt-6 tracking-widest leading-relaxed">
  Hardened <span className="text-primary font-medium">OAuth2/JWT</span> flows and zero-trust service orchestration.
  </p>
  </div>
@@ -111,7 +111,7 @@ const About = () => {
  <Globe size={20} className="text-secondary" />
  <span className="text-xs font-mono font-medium text-white/40 uppercase tracking-[0.4em]">Availability</span>
  </div>
- <h4 className="text-3xl md:text-5xl font-display font-semibold text-white uppercase tracking-normal mb-4 leading-tight">
+ <h4 className="text-3xl md:text-5xl font-display font-semibold text-white tracking-normal mb-4 leading-tight">
  Globally Distributed.
  </h4>
  <p className="text-lg md:text-xl text-textSoft font-light">

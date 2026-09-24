@@ -55,7 +55,7 @@ const Hero = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              <span className="text-xs font-mono font-medium uppercase tracking-[0.3em] text-primary">Available for Collaboration</span>
+              <span className="text-xs font-mono font-medium tracking-[0.3em] text-primary">Available for Collaboration</span>
             </div>
           </motion.div>
 

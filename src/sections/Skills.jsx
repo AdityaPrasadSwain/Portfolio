@@ -268,7 +268,7 @@ const Skills = () => {
  </div>
 
  <div>
- <h3 className="text-[11px] font-mono font-semibold text-white tracking-[0.15em] uppercase mb-1.5 group-hover:text-primary transition-colors">
+ <h3 className="text-[11px] font-mono font-semibold text-white tracking-[0.15em] mb-1.5 group-hover:text-primary transition-colors">
  {skill.name}
  </h3>
  <div className="overflow-hidden h-[1px] w-0 group-hover:w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto transition-all duration-500" />

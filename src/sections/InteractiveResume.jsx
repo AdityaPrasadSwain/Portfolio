@@ -17,9 +17,9 @@ export default function InteractiveResume() {
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 640) {
-                setScale(0.6);
+                setScale(1.0);
             } else if (window.innerWidth < 1024) {
-                setScale(0.8);
+                setScale(1.0);
             } else {
                 setScale(1.2);
             }
