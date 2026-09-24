@@ -114,7 +114,7 @@ const Projects = () => {
                       </h3>
                       <div className="flex flex-wrap gap-3 opacity-0 group-hover/card:opacity-100 transition-all duration-700 translate-y-4 group-hover/card:translate-y-0">
                         {project.tech.slice(0, 3).map(tech => (
-                          <span key={tech} className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-wider">{tech}</span>
+                          <span key={tech} className="text-xs font-mono font-medium text-white/40 uppercase tracking-wider">{tech}</span>
                         ))}
                       </div>
                     </div>
@@ -211,11 +211,11 @@ const Projects = () => {
 
                     <div className="grid grid-cols-2 gap-12">
                       <div>
-                        <h4 className="text-white font-mono font-medium uppercase tracking-widest text-[9px] mb-4 opacity-30">Role</h4>
+                        <h4 className="text-white font-mono font-medium uppercase tracking-widest text-xs mb-4 opacity-30">Role</h4>
                         <p className="text-white font-display font-semibold text-xl uppercase">{selectedProject.role}</p>
                       </div>
                       <div>
-                        <h4 className="text-white font-mono font-medium uppercase tracking-widest text-[9px] mb-4 opacity-30">Stack</h4>
+                        <h4 className="text-white font-mono font-medium uppercase tracking-widest text-xs mb-4 opacity-30">Stack</h4>
                         <div className="flex flex-wrap gap-2 pt-2">
                           {selectedProject.tech.slice(0, 3).map(tech => (
                             <span key={tech} className="text-[10px] font-mono font-medium text-white/60 uppercase">{tech}</span>

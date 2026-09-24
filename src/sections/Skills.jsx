@@ -152,7 +152,7 @@ const Skills = () => {
  className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 mb-6"
  >
  <Sparkles size={12} className="text-primary animate-pulse" />
- <span className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.3em]">Mastered Technologies</span>
+ <span className="text-xs font-mono font-medium text-white/40 uppercase tracking-[0.3em]">Mastered Technologies</span>
  </motion.div>
 
  <motion.h2

@@ -47,7 +47,7 @@ const Blog = () => {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 mb-6"
             >
               <BookOpen size={12} className="text-secondary animate-pulse" />
-              <span className="text-[9px] font-mono font-medium text-white/40 uppercase tracking-[0.3em]">Insights & Articles</span>
+              <span className="text-xs font-mono font-medium text-white/40 uppercase tracking-[0.3em]">Insights & Articles</span>
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ const Blog = () => {
                     alt={post.title} 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute top-4 left-4 z-20 px-3 py-1 glass-main rounded-full border border-white/10 text-[9px] font-mono font-medium text-white uppercase tracking-widest backdrop-blur-md">
+                  <div className="absolute top-4 left-4 z-20 px-3 py-1 glass-main rounded-full border border-white/10 text-xs font-mono font-medium text-white uppercase tracking-widest backdrop-blur-md">
                     {post.category}
                   </div>
                 </div>
