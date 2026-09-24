@@ -22,7 +22,6 @@ const Navbar = () => {
         { name: 'Skills', path: '/#skills', icon: Code2 },
         { name: 'Projects', path: '/#projects', icon: Briefcase },
         { name: 'Blog', path: '/#blog', icon: BookOpen },
-        { name: 'Resume', path: '/#resume', icon: FileText }
     ];
 
     return (
@@ -79,12 +78,13 @@ const Navbar = () => {
 
                     {/* Action Button */}
                     <div className="flex items-center gap-5">
-                        <Link
-                            to="/resume"
+                        <a
+                            href="/resume/ATS_Aditya_Prasad_Swain_Resume.pdf"
+                            download="Aditya_Prasad_Swain_Resume.pdf"
                             className="hidden md:flex items-center gap-2 h-11 px-6 glass-main rounded-xl border border-white/5 text-sm font-display font-medium uppercase tracking-widest text-primary hover:bg-primary/10 hover:border-primary/20 transition-all"
                         >
                             <FileText size={16} /> Resume <ArrowRight size={14} className="rotate-90 ml-1" />
-                        </Link>
+                        </a>
 
                         {/* Mobile Menu Toggle */}
                         <button
@@ -128,6 +128,15 @@ const Navbar = () => {
                                     </Link>
                                 )
                             })}
+                            <a
+                                href="/resume/ATS_Aditya_Prasad_Swain_Resume.pdf"
+                                download="Aditya_Prasad_Swain_Resume.pdf"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="flex items-center gap-4 text-4xl font-display font-semibold text-primary hover:text-white uppercase tracking-normal mt-4"
+                            >
+                                <FileText size={32} className="text-primary/70" />
+                                Download Resume
+                            </a>
                         </div>
                     </motion.div>
                 )}
