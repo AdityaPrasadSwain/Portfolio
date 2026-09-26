@@ -64,7 +64,7 @@ const profile = {
             title: "AI-Driven Learning Platform",
             subtitle: "Intelligent Education Ecosystem",
             category: "Education Tool",
-            tech: ["MERN Stack", "OpenAI API", "Socket.io", "Tailwind", "Framer Motion"],
+            tech: ["Spring Boot", "OpenAI API", "Socket.io", "Tailwind", "Framer Motion"],
             description: "An intelligent learning system featuring AI tutors and real-time collaboration tools for students and educators.",
             role: "Full Stack Developer",
             vision: "To democratize high-quality, personalized education through generative AI, making advanced tutoring accessible to every student regardless of their location.",
