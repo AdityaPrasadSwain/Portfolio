@@ -56,7 +56,7 @@ const profile = {
                 "Automated Financial Module for seller payouts"
             ],
             links: {
-                demo: "https://udrakala-demo.example.com",
+                demo: "#",
                 github: "https://github.com/AdityaPrasadSwain/OdishaProduct"
             }
         },

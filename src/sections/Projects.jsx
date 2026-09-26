@@ -236,9 +236,6 @@ const Projects = () => {
                     <a href={selectedProject.links.github} target="_blank" rel="noreferrer" className="flex-1 h-14 flex items-center justify-center bg-primary text-black font-semibold uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.03] active:scale-[0.98] transition-all shadow-neon-cobalt">
                       Architecture <Github className="ml-3" size={16} />
                     </a>
-                    <a href={selectedProject.links.demo} target="_blank" rel="noreferrer" className="flex-1 h-14 flex items-center justify-center glass-main border border-white/5 text-white font-semibold uppercase tracking-widest text-[10px] rounded-xl hover:bg-white/[0.03] transition-all">
-                      Experience <ExternalLink className="ml-3 opacity-40" size={16} />
-                    </a>
                   </div>
                 </div>
               </div>
