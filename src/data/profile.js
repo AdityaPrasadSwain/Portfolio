@@ -133,7 +133,7 @@ const profile = {
     socials: {
         email: "mailto:swainaditya921@gmail.com",
         instagram: "https://www.instagram.com/adityaswain45/",
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/adityaprasadswain",
         github: "https://github.com/AdityaPrasadSwain"
     }
 };
